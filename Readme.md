@@ -12,6 +12,6 @@ You need to install the libraries below by using NuGet:
 - freeglut.redist.2.8.1.15
 - Glew_dynamic.2.0.0.0
 
-###Appreciation
+##Acknowledgment
 This software uses "stb single-file public domain libraries for C/C++".<br>
 https://github.com/nothings/stb
