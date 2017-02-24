@@ -57,6 +57,8 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include <sstream>
 #include <fstream>
 #include <map>
+#include <unordered_map>
+#include <vector>
 
 #include <stdexcept>
 #include <cassert>
@@ -67,3 +69,4 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FILE_SIG ("(at " + std::string(__FILE__) + ":" + std::to_string(__LINE__) + ")")
 #define FILE_FUNC_SIG ("(at " + std::string(__FILE__) + ":" + std::to_string(__LINE__) + " " + std::string(__func__) + "())")
+

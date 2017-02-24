@@ -30,7 +30,7 @@ namespace gl {
 	 public:
 		GLInitWindow(void);
 		
-		virtual void OnInit(void) override;
+		void OnInit(void);
 		virtual void Update(void) override {};
 	 private:
 		

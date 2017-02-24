@@ -22,10 +22,16 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace ICSE {
 
-	class TestWindow : sdl::SDLWindow {		
+	class TestWindow : public sdl::SDLWindow {
+		SDL_GLContext m_context;
+		ICSE::graphics::gl::GLShaderSet m_shader;
+		ICSE::graphics::gl::GLVBO m_vbo;
 	 public:
 		TestWindow(void);
-		
+
+		void OnInit(void);
+		virtual void Update(void) override;
+		virtual void OnEvent(SDL_WindowEvent &evt) override;
 	 private:
 		
 	};

@@ -26,22 +26,22 @@ namespace sdl{
 
 	class SDLWindow {
 		SDL_Window *m_window;
-		SDL_GLContext m_context;
-		ICSE::graphics::gl::GLShaderSet m_shader;
-		ICSE::graphics::gl::GLVBO m_vbo;
+		
 
 	public:
 		SDLWindow(void);
-		SDLWindow(const char *name, uint32_t width, uint32_t height, int flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+		SDLWindow(const char *name = "", uint32_t width = 640, uint32_t height = 480, int flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
 		SDL_Event WaitEvent(void);
 
 		~SDLWindow(void);
 
-		virtual void OnInit(void);
+		void OnInit(void);
 		virtual void Update(void);
+		virtual void OnEvent(SDL_WindowEvent &evt) {};
 
 		SDL_Window *window(void);
+		uint32_t windowID(void);
 
 	private:
 		void initWindow(const char *name, uint32_t width, uint32_t height, int flags);

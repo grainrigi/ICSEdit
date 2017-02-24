@@ -77,6 +77,12 @@
     <Filter Include="Headers\util\font">
       <UniqueIdentifier>{6ae4ffb3-42ba-44d8-ae29-5fedc69eb5ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\wnd">
+      <UniqueIdentifier>{fd94d066-4410-45c1-aa18-40bc9de1bc19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\wnd">
+      <UniqueIdentifier>{da0a338c-65d0-49da-89c6-96f42b7964f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\main.cpp">
@@ -135,6 +141,9 @@
     </ClCompile>
     <ClCompile Include="cpp\ICSE\TestWindow.cpp">
       <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\wnd\WindowManager.cpp">
+      <Filter>Sources\wnd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +215,12 @@
     </ClInclude>
     <ClInclude Include="include\ICSE\TestWindow.h">
       <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\WindowManager.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\drawenv.h">
+      <Filter>Headers\graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

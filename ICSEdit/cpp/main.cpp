@@ -1,4 +1,4 @@
-/*
+﻿/*
 (c) 2016,2017 Grain
 
 This file is part of ICSEdit.
@@ -22,6 +22,8 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "sdl/SDLHandler.h"
 #include "sdl/SDLWindow.h"
 #include "graphics/gl/GLHandler.h"
+#include "ICSE/TestWindow.h"
+#include "wnd/WindowManager.h"
 
 using ICSE::sdl::SDLHandler;
 
@@ -39,15 +41,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdline, in
 	{
 		SDLHandler sdl;
 		ICSE::Singleton<ICSE::graphics::gl::GLHandler>::create();
-		ICSE::sdl::SDLWindow wnd("Window", 256, 256);
-		wnd.OnInit();
+		ICSE::Singleton<ICSE::wnd::WindowManager>::create();
 
-		while (wnd.WaitEvent().window.event != SDL_WINDOWEVENT_CLOSE)
-		{
-			wnd.Update();
-			//SDL_Delay(16);
-		}
+		ICSE::wnd::WindowManager *wman = ICSE::Singleton<ICSE::wnd::WindowManager>::getInstancePtr();
+		
+		auto testwin = wman->CreateAndRegisterWindow<ICSE::TestWindow>();
+		
+		while (wman->ProcessEvent());
+		
+		ICSE::Singleton<ICSE::wnd::WindowManager>::destroy();
 		ICSE::Singleton<ICSE::graphics::gl::GLHandler>::destroy();
+
+		testwin.reset();
 
 		return 0;
 	}
