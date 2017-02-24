@@ -27,3 +27,12 @@
 *.exe
 *.out
 *.app
+
+#Other
+.*/
+Debug/
+Release/
+res/
+packages/
+ipch/
+*.db

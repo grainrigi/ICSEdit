@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{1523fecf-31eb-448b-8505-5ec29314bf7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{089e4062-eb4d-419e-9460-2b0e56451682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headers\util">
+      <UniqueIdentifier>{a269a81a-ff12-40b6-b083-66792e1bf9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\util\basic">
+      <UniqueIdentifier>{9e2571f6-414f-421c-8d05-876cbd296a1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\util">
+      <UniqueIdentifier>{67e393a8-e230-4e73-9c69-ca41462a1683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\util\basic">
+      <UniqueIdentifier>{9ebeb658-ca4a-400f-8a7b-5932066f21d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\view">
+      <UniqueIdentifier>{1b646abe-37aa-4035-a5bc-32d7e592f4ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\view">
+      <UniqueIdentifier>{11921736-cc1c-4280-942c-606a1cf9caa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\mini">
+      <UniqueIdentifier>{c6072f31-685e-45d5-b72d-e6a19bcaa36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\mini\view">
+      <UniqueIdentifier>{c68986d2-02f1-45d2-9886-8236b2f2f670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\mini">
+      <UniqueIdentifier>{d02c2b88-ea44-4193-92eb-5fb9c1d67f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\mini\view">
+      <UniqueIdentifier>{c00544d1-a62a-471a-85b9-8c6d88c150f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\graphics">
+      <UniqueIdentifier>{041fa72f-277c-4069-bc15-0fa6871a0145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\graphics\gl">
+      <UniqueIdentifier>{c4f14e9c-2cf5-474c-b5b6-a0d8730c11bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\graphics">
+      <UniqueIdentifier>{56ff6275-72e3-47ad-bbd7-ab6c87274c5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\graphics\gl">
+      <UniqueIdentifier>{e16b8e30-bc9e-4f65-a75b-e50226d98e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\util\file">
+      <UniqueIdentifier>{ec26c624-21e6-437c-9cda-afd624dc00d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\util\file">
+      <UniqueIdentifier>{a518fd44-6a5b-45b6-901a-51cea97a757c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\util\container">
+      <UniqueIdentifier>{fe4386f9-2787-4960-8e59-dd605fb56fc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\util\container">
+      <UniqueIdentifier>{4884a912-a4fe-4a8b-bd6f-36ef3b7ee074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\util\font">
+      <UniqueIdentifier>{822c2507-73c2-4654-8949-c5b4f1070f0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\sdl">
+      <UniqueIdentifier>{92162faa-10da-4813-9e87-1f5bb72edd7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sdl">
+      <UniqueIdentifier>{c5edc906-7fa7-4d61-81f0-4b4805280089}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\util\font">
+      <UniqueIdentifier>{6ae4ffb3-42ba-44d8-ae29-5fedc69eb5ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\ICSE" >
+      <UniqueIdentifier>{21e46491-7779-4bf6-a72f-4120ba74921f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\ICSE" >
+      <UniqueIdentifier>{3cea3f8f-3364-4dcc-aba5-1bd9e68ece51}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cpp\main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\stdafx.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\Mesh2D.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\Mesh2DRenderer.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\gl\GLShaderSet.cpp">
+      <Filter>Sources\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\gl\GLTexture.cpp">
+      <Filter>Sources\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\gl\GLVBO.cpp">
+      <Filter>Sources\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\file\BinaryFile.cpp">
+      <Filter>Sources\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\file\ImageFile.cpp">
+      <Filter>Sources\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\container\Uint8Array.cpp">
+      <Filter>Sources\util\container</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\file\stb_image.cpp">
+      <Filter>Sources\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\DrawEnv.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\font\stb_truetype.cpp">
+      <Filter>Sources\util\font</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\sdl\SDLHandler.cpp">
+      <Filter>Sources\sdl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\sdl\SDLWindow.cpp">
+      <Filter>Sources\sdl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\font\Font.cpp">
+      <Filter>Sources\util\font</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\gl\GLHandler.cpp" >
+      <Filter>Sources\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp" >
+      <Filter>Sources\graphics\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\ICSE\TestWindow.cpp" >
+      <Filter>Sources\ICSE</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\basic\Singleton.h">
+      <Filter>Headers\util\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\basic\console_log.h">
+      <Filter>Headers\util\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\BillBoard2D.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\Geometry.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\IPrimitive.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\Mesh2D.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\Mesh2DRenderer.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\gl\GLExtention.h">
+      <Filter>Headers\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\gl\GLShaderSet.h">
+      <Filter>Headers\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\gl\GLTexture.h">
+      <Filter>Headers\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\gl\GLVBO.h">
+      <Filter>Headers\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\file\BinaryFile.h">
+      <Filter>Headers\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\file\ImageFile.h">
+      <Filter>Headers\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\file\stb_image.h">
+      <Filter>Headers\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\container\Uint8Array.h">
+      <Filter>Headers\util\container</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\container\FixedAllocator.h">
+      <Filter>Headers\util\container</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sdl\SDLHandler.h">
+      <Filter>Headers\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sdl\SDLWindow.h">
+      <Filter>Headers\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\font\stb_truetype.h">
+      <Filter>Headers\util\font</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\font\Font.h">
+      <Filter>Headers\util\font</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\gl\GLHandler.h" >
+      <Filter>Headers\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\gl\GLInitWindow.h" >
+      <Filter>Headers\graphics\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ICSE\TestWindow.h" >
+      <Filter>Headers\ICSE</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
