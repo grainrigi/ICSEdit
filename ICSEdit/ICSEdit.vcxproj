@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Glew_dynamic.2.0.0.0\build\native\Glew_dynamic.props" Condition="Exists('..\packages\Glew_dynamic.2.0.0.0\build\native\Glew_dynamic.props')" />
   <ItemGroup Label="ProjectConfigurations">
@@ -180,9 +180,9 @@
     <ClCompile Include="cpp\util\file\stb_image.cpp" />
     <ClCompile Include="cpp\util\font\stb_truetype.cpp" />
     <ClCompile Include="cpp\util\font\Font.cpp" />
-    <ClCompile Include="cpp\graphics\gl\GLHandler.cpp"  />
-    <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp"  />
-    <ClCompile Include="cpp\ICSE\TestWindow.cpp"  />
+    <ClCompile Include="cpp\graphics\gl\GLHandler.cpp" />
+    <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp" />
+    <ClCompile Include="cpp\ICSE\TestWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -190,7 +190,6 @@
     </ClCompile>
     <ClInclude Include="include\graphics\BillBoard2D.h" />
     <ClInclude Include="include\graphics\Geometry.h" />
-    <ClInclude Include="include\graphics\gl\GLExtention.h" />
     <ClInclude Include="include\graphics\gl\GLShaderSet.h" />
     <ClInclude Include="include\graphics\gl\GLTexture.h" />
     <ClInclude Include="include\graphics\gl\GLVBO.h" />
@@ -209,9 +208,9 @@
     <ClInclude Include="include\util\file\stb_image.h" />
     <ClInclude Include="include\util\font\stb_truetype.h" />
     <ClInclude Include="include\util\font\Font.h" />
-    <ClInclude Include="include\graphics\gl\GLHandler.h"  />
-    <ClInclude Include="include\graphics\gl\GLInitWindow.h"  />
-    <ClInclude Include="include\ICSE\TestWindow.h"  />
+    <ClInclude Include="include\graphics\gl\GLHandler.h" />
+    <ClInclude Include="include\graphics\gl\GLInitWindow.h" />
+    <ClInclude Include="include\ICSE\TestWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
@@ -77,12 +77,6 @@
     <Filter Include="Headers\util\font">
       <UniqueIdentifier>{6ae4ffb3-42ba-44d8-ae29-5fedc69eb5ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\ICSE" >
-      <UniqueIdentifier>{21e46491-7779-4bf6-a72f-4120ba74921f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headers\ICSE" >
-      <UniqueIdentifier>{3cea3f8f-3364-4dcc-aba5-1bd9e68ece51}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\main.cpp">
@@ -133,14 +127,14 @@
     <ClCompile Include="cpp\util\font\Font.cpp">
       <Filter>Sources\util\font</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\graphics\gl\GLHandler.cpp" >
+    <ClCompile Include="cpp\graphics\gl\GLHandler.cpp">
       <Filter>Sources\graphics\gl</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp" >
+    <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp">
       <Filter>Sources\graphics\gl</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\ICSE\TestWindow.cpp" >
-      <Filter>Sources\ICSE</Filter>
+    <ClCompile Include="cpp\ICSE\TestWindow.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +161,6 @@
     </ClInclude>
     <ClInclude Include="include\graphics\Mesh2DRenderer.h">
       <Filter>Headers\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\graphics\gl\GLExtention.h">
-      <Filter>Headers\graphics\gl</Filter>
     </ClInclude>
     <ClInclude Include="include\graphics\gl\GLShaderSet.h">
       <Filter>Headers\graphics\gl</Filter>
@@ -207,14 +198,14 @@
     <ClInclude Include="include\util\font\Font.h">
       <Filter>Headers\util\font</Filter>
     </ClInclude>
-    <ClInclude Include="include\graphics\gl\GLHandler.h" >
+    <ClInclude Include="include\graphics\gl\GLHandler.h">
       <Filter>Headers\graphics\gl</Filter>
     </ClInclude>
-    <ClInclude Include="include\graphics\gl\GLInitWindow.h" >
+    <ClInclude Include="include\graphics\gl\GLInitWindow.h">
       <Filter>Headers\graphics\gl</Filter>
     </ClInclude>
-    <ClInclude Include="include\ICSE\TestWindow.h" >
-      <Filter>Headers\ICSE</Filter>
+    <ClInclude Include="include\ICSE\TestWindow.h">
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
