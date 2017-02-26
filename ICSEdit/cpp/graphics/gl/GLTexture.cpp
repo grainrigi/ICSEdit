@@ -68,7 +68,9 @@ bool ICSE::graphics::gl::GLTexture::uploadImage(const file::ImageFile & img)
 		return false;
 
     assert(img.getChannelCount() - 3 ==0 || img.getChannelCount() - 3 == 1);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.getX(), img.getY(), 0, glChannelFormat[img.getChannelCount() - 3], GL_UNSIGNED_BYTE, img.getPixels());
+	glGetError();
+	bind();
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.getX(), img.getY(), 0, GL_RGBA/*glChannelFormat[img.getChannelCount() - 3]*/, GL_UNSIGNED_BYTE, img.getPixels());
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR)
 		throw std::runtime_error("glTexImage2D failed.Error:%d" + std::to_string(err) + FILE_FUNC_SIG);
@@ -79,6 +81,18 @@ bool ICSE::graphics::gl::GLTexture::uploadImage(const file::ImageFile & img)
 bool ICSE::graphics::gl::GLTexture::uploadImage(const file::ImageFile & img, GLint internalFormat, GLenum format, GLenum type)
 {
 	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, img.getX(), img.getY(), 0, format, type, img.getPixels());
+	GLenum err = glGetError();
+	if (err != GL_NO_ERROR)
+		throw std::runtime_error("glTexImage2D failed.Error:%d" + std::to_string(err) + FILE_FUNC_SIG);
+
+	return true;
+}
+
+bool ICSE::graphics::gl::GLTexture::uploadImage(const char * pixels, int width, int height, GLint internalFormat, GLenum format, GLenum type)
+{
+	glGetError();
+	bind();
+	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, pixels);
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR)
 		throw std::runtime_error("glTexImage2D failed.Error:%d" + std::to_string(err) + FILE_FUNC_SIG);

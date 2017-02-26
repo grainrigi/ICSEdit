@@ -26,7 +26,7 @@ namespace ICSE{
 namespace graphics {
 
 	class Mesh2DRenderer {
-		friend class ICSE::Singleton<Mesh2DRenderer>;
+		//friend class ICSE::Singleton<Mesh2DRenderer>;
 
 		gl::GLShaderSet m_shader_tex;
 		gl::GLShaderSet m_shader_vc;
@@ -36,13 +36,13 @@ namespace graphics {
 		gl::GLShaderSet m_shader_ins_gl3_vc;
 	public:
 		~Mesh2DRenderer(void);
-
+		Mesh2DRenderer(void);
 		
 
 		void draw(DrawEnv *env, Mesh2D &mesh);
 		void draw(DrawEnv *env, Mesh2D &mesh, const gl::GLShaderSet &shader, const Mesh2D::ShaderAttributes &attr);
 	private:
-		Mesh2DRenderer(void);
+		
 
 		void initShader(void);
 

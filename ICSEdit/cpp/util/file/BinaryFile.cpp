@@ -4,7 +4,7 @@ using ICSE::file::BinaryFile;
 
 using ICSE::container::Uint8Array;
 
-BinaryFile BinaryFile::loadFromFile(const std::string & fileName)
+BinaryFile BinaryFile::LoadFromFile(const std::string & fileName)
 {
 	std::ifstream fs(fileName, std::ios::in | std::ios::binary);
 	BinaryFile bf;

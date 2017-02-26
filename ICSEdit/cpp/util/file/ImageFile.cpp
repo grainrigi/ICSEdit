@@ -8,12 +8,18 @@ using ICSE::file::ImageFile;
 
 using ICSE::container::Uint8Array;
 
-ImageFile ImageFile::loadFromFile(const BinaryFile &file, int format)
+ImageFile ImageFile::LoadFromFile(const BinaryFile &file, int format)
 {
-	return loadFromMemory(file.getData(), file.getSize(), format);
+	return LoadFromMemory(file.getData(), file.getSize(), format);
 }
 
-ImageFile ICSE::file::ImageFile::loadFromMemory(const uint8_t * buffer, uint32_t size, int format)
+ImageFile ICSE::file::ImageFile::LoadFromFile(const std::string & filepath, int format)
+{
+	BinaryFile file = BinaryFile::LoadFromFile(filepath);
+	return LoadFromFile(file, format);
+}
+
+ImageFile ICSE::file::ImageFile::LoadFromMemory(const uint8_t * buffer, uint32_t size, int format)
 {
 	ImageFile img;
 	img.m_pixels = Uint8Array(reinterpret_cast<uint8_t*>(stbi_load_from_memory(

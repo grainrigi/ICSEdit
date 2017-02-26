@@ -299,8 +299,9 @@ void Mesh2D::bindIdxBuf(void)
 
 void Mesh2D::checkUploaded(void)
 {
-	if(m_Position.unique() && m_Coords.unique() && m_Color.unique() && m_Indices.unique())
-		m_flags |= UPLOADED;
-	else
+	if(!((m_flags & ATTR_POSITION) == 0 || m_Position.unique())
+		&& ((m_flags & ATTR_COORD) == 0 || m_Coords.unique())
+		&& ((m_flags & ATTR_COLOR) == 0 || m_Color.unique())
+		&& ((m_flags & ATTR_INDEX) == 0 || m_Indices.unique()))
 		m_flags &= ~UPLOADED;
 }

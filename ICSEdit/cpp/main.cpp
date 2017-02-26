@@ -24,36 +24,50 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "graphics/gl/GLHandler.h"
 #include "ICSE/TestWindow.h"
 #include "wnd/WindowManager.h"
+#include "graphics/Mesh2DRenderer.h"
 
 using ICSE::sdl::SDLHandler;
 
 
-#if defined WINVER
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdline, int nCmdShow)
-
+#ifdef main
+#undef main
+#if 0
+#include <Windows.h>
+int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdline, int nCmdShow) { return SDL_main(0, 0); }
 #else
-
-	int main(int ,char**)
-
+int main(int argc, char** argv) { return SDL_main(argc, argv); }
+#endif
+	int SDL_main(int, char**)
 #endif
 
 	{
-		SDLHandler sdl;
-		ICSE::Singleton<ICSE::graphics::gl::GLHandler>::create();
-		ICSE::Singleton<ICSE::wnd::WindowManager>::create();
+		try {
+			SDLHandler sdl;
+			ICSE::Singleton<ICSE::graphics::gl::GLHandler>::create();
 
-		ICSE::wnd::WindowManager *wman = ICSE::Singleton<ICSE::wnd::WindowManager>::getInstancePtr();
-		
-		auto testwin = wman->CreateAndRegisterWindow<ICSE::TestWindow>();
-		
-		while (wman->ProcessEvent());
-		
-		ICSE::Singleton<ICSE::wnd::WindowManager>::destroy();
-		ICSE::Singleton<ICSE::graphics::gl::GLHandler>::destroy();
+			ICSE::Singleton<ICSE::wnd::WindowManager>::create();
 
-		testwin.reset();
+			ICSE::wnd::WindowManager *wman = ICSE::Singleton<ICSE::wnd::WindowManager>::getInstancePtr();
+			ICSE::Singleton<ICSE::graphics::Mesh2DRenderer>::create();
+
+			auto testwin = wman->CreateAndRegisterWindow<ICSE::TestWindow>();
+
+			while (wman->ProcessEvent());
+
+			ICSE::Singleton<ICSE::wnd::WindowManager>::destroy();
+			ICSE::Singleton<ICSE::graphics::Mesh2DRenderer>::destroy();
+			ICSE::Singleton<ICSE::graphics::gl::GLHandler>::destroy();
+
+			testwin.reset();
+			return 0;
+		}
+		catch(std::runtime_error ex)
+		{
+			std::cout << ex.what();
+			getchar();
+			return -1;
+		}
 
 		return 0;
 	}
-

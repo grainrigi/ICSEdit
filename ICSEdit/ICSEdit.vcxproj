@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Glew_dynamic.2.0.0.0\build\native\Glew_dynamic.props" Condition="Exists('..\packages\Glew_dynamic.2.0.0.0\build\native\Glew_dynamic.props')" />
   <ItemGroup Label="ProjectConfigurations">
@@ -72,16 +72,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)freeglut\include;$(BOOST);$(SDLDIR)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)freeglut\lib;$(SolutionDir)packages\glew.1.9.0.1\build\native\lib\v110\Win32\Debug\static;$(BOOST)\stage\lib;$(SDLDIR)\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)freetype\include;$(BOOST);$(SDLDIR)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)freetype\objs\vc2010\Win32;$(SolutionDir)packages\glew.1.9.0.1\build\native\lib\v110\Win32\Debug\static;$(BOOST)\stage\lib;$(SDLDIR)\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)freeglut\include;$(BOOST);C:\Path\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)freeglut\lib;$(SolutionDir)packages\glew.1.9.0.1\build\native\lib\v110\Win32\Debug\static;$(BOOST)\stage\lib;$(SDLDIR)\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)freetype\include;$(BOOST);$(SDLDIR)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)freetype\objs\vc2010\Win32;$(SolutionDir)packages\glew.1.9.0.1\build\native\lib\v110\Win32\Debug\static;$(BOOST)\stage\lib;$(SDLDIR)\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -98,9 +98,9 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;SDL2.lib;freetype27d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <FullProgramDatabaseFile>false</FullProgramDatabaseFile>
       <EntryPointSymbol>
       </EntryPointSymbol>
@@ -132,13 +132,14 @@
       <AdditionalIncludeDirectories>$(ProjectDir)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;SDL2.lib;freetype27.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
     </Link>
@@ -168,6 +169,7 @@
     <ClCompile Include="cpp\graphics\gl\GLVBO.cpp" />
     <ClCompile Include="cpp\graphics\Mesh2D.cpp" />
     <ClCompile Include="cpp\graphics\Mesh2DRenderer.cpp" />
+    <ClCompile Include="cpp\graphics\vmath.cpp" />
     <ClCompile Include="cpp\main.cpp" />
     <ClCompile Include="cpp\sdl\SDLHandler.cpp" />
     <ClCompile Include="cpp\stdafx.cpp">
@@ -178,12 +180,27 @@
     <ClCompile Include="cpp\util\file\BinaryFile.cpp" />
     <ClCompile Include="cpp\util\file\ImageFile.cpp" />
     <ClCompile Include="cpp\util\file\stb_image.cpp" />
-    <ClCompile Include="cpp\util\font\stb_truetype.cpp" />
+    <ClCompile Include="cpp\util\font\stb_truetype.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
     <ClCompile Include="cpp\util\font\Font.cpp" />
     <ClCompile Include="cpp\graphics\gl\GLHandler.cpp" />
     <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp" />
     <ClCompile Include="cpp\ICSE\TestWindow.cpp" />
     <ClCompile Include="cpp\wnd\WindowManager.cpp" />
+    <ClCompile Include="cpp\graphics\MemCanvasRGBA8.cpp" />
+    <ClCompile Include="cpp\graphics\MemCanvas.cpp" />
+    <ClCompile Include="cpp\graphics\MemSubCanvasRGBA8.cpp" />
+    <ClCompile Include="cpp\graphics\MemCanvasA8.cpp" />
+    <ClCompile Include="cpp\graphics\MemSubCanvasA8.cpp" />
+    <ClCompile Include="cpp\util\font\FontRenderer.cpp" />
+    <ClCompile Include="cpp\util\font\UTF8Reader.cpp" />
+    <ClCompile Include="cpp\util\font\FreeType.cpp"  />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -198,6 +215,7 @@
     <ClInclude Include="include\graphics\IPrimitive.h" />
     <ClInclude Include="include\graphics\Mesh2D.h" />
     <ClInclude Include="include\graphics\Mesh2DRenderer.h" />
+    <ClInclude Include="include\graphics\vmath.h" />
     <ClInclude Include="include\sdl\SDLHandler.h" />
     <ClInclude Include="include\sdl\SDLWindow.h" />
     <ClInclude Include="include\stdafx.h" />
@@ -214,6 +232,14 @@
     <ClInclude Include="include\graphics\gl\GLInitWindow.h" />
     <ClInclude Include="include\ICSE\TestWindow.h" />
     <ClInclude Include="include\wnd\WindowManager.h" />
+    <ClInclude Include="include\graphics\MemCanvasRGBA8.h" />
+    <ClInclude Include="include\graphics\MemCanvas.h" />
+    <ClInclude Include="include\graphics\MemSubCanvasRGBA8.h" />
+    <ClInclude Include="include\graphics\MemCanvasA8.h" />
+    <ClInclude Include="include\graphics\MemSubCanvasA8.h" />
+    <ClInclude Include="include\util\font\FontRenderer.h" />
+    <ClInclude Include="include\util\font\UTF8Reader.h" />
+    <ClInclude Include="include\util\font\FreeType.h"  />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

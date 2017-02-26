@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
@@ -121,9 +121,6 @@
     <ClCompile Include="cpp\graphics\DrawEnv.cpp">
       <Filter>Sources\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\util\font\stb_truetype.cpp">
-      <Filter>Sources\util\font</Filter>
-    </ClCompile>
     <ClCompile Include="cpp\sdl\SDLHandler.cpp">
       <Filter>Sources\sdl</Filter>
     </ClCompile>
@@ -144,6 +141,36 @@
     </ClCompile>
     <ClCompile Include="cpp\wnd\WindowManager.cpp">
       <Filter>Sources\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\vmath.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\font\stb_truetype.cpp">
+      <Filter>Sources\util\font</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemCanvasRGBA8.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemCanvas.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemSubCanvasRGBA8.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemCanvasA8.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemSubCanvasA8.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\font\FontRenderer.cpp">
+      <Filter>Sources\util\font</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\font\UTF8Reader.cpp">
+      <Filter>Sources\util\font</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\util\font\FreeType.cpp" >
+      <Filter>Sources\util\font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +248,33 @@
     </ClInclude>
     <ClInclude Include="include\graphics\drawenv.h">
       <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\vmath.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemCanvasRGBA8.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemCanvas.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemSubCanvasRGBA8.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemCanvasA8.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemSubCanvasA8.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\font\FontRenderer.h">
+      <Filter>Headers\util\font</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\font\UTF8Reader.h">
+      <Filter>Headers\util\font</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\font\FreeType.h" >
+      <Filter>Headers\util\font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

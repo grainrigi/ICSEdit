@@ -37,8 +37,9 @@ namespace file{
 		};
 
 		//The file size is limited up to 4GiB
-		static ImageFile loadFromFile(const BinaryFile &file, int format);
-		static ImageFile loadFromMemory(const uint8_t *buffer, uint32_t size, int format);
+		static ImageFile LoadFromFile(const BinaryFile &file, int format);
+		static ImageFile LoadFromFile(const std::string &filepath, int format);
+		static ImageFile LoadFromMemory(const uint8_t *buffer, uint32_t size, int format);
 		ImageFile(void);
 		~ImageFile(void) = default;
 

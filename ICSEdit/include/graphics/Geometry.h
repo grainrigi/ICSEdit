@@ -47,5 +47,15 @@ namespace graphics{
 		uint8_t a;
 	};
 	typedef ColorF Color;
+
+	struct RECT {
+		int top;
+		int left;
+		int bottom;
+		int right;
+
+		int width(void) const { return std::abs(right - left); }
+		int height(void) const { return std::abs(bottom - top); }
+	};
 }
 }

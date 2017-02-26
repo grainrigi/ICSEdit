@@ -40,6 +40,7 @@ namespace gl{
 
 		bool uploadImage(const file::ImageFile &img);
 		bool uploadImage(const file::ImageFile &img, GLint internalFormat, GLenum format, GLenum type);
+		bool uploadImage(const char *pixels, int width, int height, GLint internalFormat, GLenum format, GLenum type);
 
 		GLuint handle(void) const { return m_texture; }
 		void bind(void) const;

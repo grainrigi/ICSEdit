@@ -19,18 +19,14 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#ifdef _DEBUG
 
-#define WXUSINGDLL
 
-#endif
-
-#define FREEGLUT_STATIC
 #include <GL/glew.h>
 #include <GL/GL.h>
 #include <GL/GLU.h>
-#include <GL/glut.h>
-#include <GL/freeglut.h>
+#include <graphics/vmath.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 /*
 #include <wx/wxprec.h>
@@ -59,9 +55,11 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <unordered_map>
 #include <vector>
+#include <chrono>
 
 #include <stdexcept>
 #include <cassert>
+#include <emmintrin.h>
 
 //my headers
 #define DO_LOG

@@ -1,5 +1,4 @@
 /*
-(c) 2016,2017 Grain
 
 This file is part of ICSEdit.
 
@@ -35,7 +34,6 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef __cplusplus
-extern "C" {
 #endif
 
 	// private structure
@@ -523,7 +521,6 @@ extern "C" {
 	};
 
 #ifdef __cplusplus
-}
 #endif
 
 #endif // __STB_INCLUDE_STB_TRUETYPE_H__

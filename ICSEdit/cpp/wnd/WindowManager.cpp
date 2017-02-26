@@ -34,26 +34,46 @@ void ICSE::wnd::WindowManager::RegisterWindow(std::shared_ptr<ICSE::sdl::SDLWind
 
 bool ICSE::wnd::WindowManager::ProcessEvent(void)
 {
+	constexpr std::chrono::nanoseconds frame(16000000);
+
 	SDL_Event ev;
 	SDL_Keycode key;
 
-	if (!SDL_PollEvent(&ev))
-		return true;
-	
-	if (ev.type == SDL_QUIT)
-		return false;
-	else if (ev.type == SDL_WINDOWEVENT)
+	auto start = std::chrono::high_resolution_clock::now();
+
+	while (SDL_PollEvent(&ev))
 	{
-		auto it = m_windows.find(ev.window.windowID);
-		if (it != m_windows.end())
-			it->second->OnEvent(ev.window);
+		if (ev.type == SDL_QUIT)
+			return false;
+		else if (ev.type == SDL_WINDOWEVENT)
+		{
+			auto it = m_windows.find(ev.window.windowID);
+			if (it != m_windows.end())
+				it->second->OnEvent(ev.window);
+		}
 	}
+
+	
 
 	for (auto wnd : m_windows)
 		wnd.second->Update();
 
 	if (m_quitting)
 		return false;
+
+	auto end = std::chrono::high_resolution_clock::now();
+
+	auto diff = end - start;
+	auto waitms = std::chrono::duration_cast<std::chrono::milliseconds>(frame - diff).count();
+
+	//if (waitms > 20)
+	//	__asm { int 3};
+
+	if (waitms < 0)
+		waitms = 0;
+
+	SDL_Delay(waitms);
+	//SDL_Delay(16);
 
 	return true;
 }

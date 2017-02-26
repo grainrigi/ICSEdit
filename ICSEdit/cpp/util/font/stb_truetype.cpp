@@ -1,5 +1,4 @@
 /*
-(c) 2016,2017 Grain
 
 This file is part of ICSEdit.
 
@@ -17,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define STBTT_STATIC
+//#define STBTT_STATIC
 #include "util/font/stb_truetype.h"
 #define STB_TRUETYPE_IMPLEMENTATION
 // stb_truetype.h - v1.14 - public domain

@@ -125,7 +125,7 @@ ICSE::graphics::Mesh2DRenderer::Mesh2DRenderer(void)
 void ICSE::graphics::Mesh2DRenderer::initShader(void)
 {
 	std::string vShader_tex{ 
-		"#version 120\n"
+		//"#version 120\n"
 		"attribute vec4 attr_pos; "
 		"attribute vec2 attr_uv;"
 		"varying vec2 vary_uv;"
@@ -134,7 +134,7 @@ void ICSE::graphics::Mesh2DRenderer::initShader(void)
 		"  vary_uv = attr_uv;"
 		"}" };
 	std::string fShader_tex{
-		"#version 120\n"
+		//"#version 120\n"
 		"uniform sampler2D unif_texture;"
 		"varying vec2 vary_uv;"
 		"void main(){"
@@ -142,7 +142,7 @@ void ICSE::graphics::Mesh2DRenderer::initShader(void)
 		"}" };
 
 	std::string vShader_vc{
-		"#version 120\n"
+		//"#version 120\n"
 		"attribute vec4 attr_pos; "
 		"attribute vec4 attr_color;"
 		"varying vec4 vary_color;"
@@ -151,7 +151,7 @@ void ICSE::graphics::Mesh2DRenderer::initShader(void)
 		"  vary_color = attr_color;"
 		"}" };
 	std::string fShader_vc{
-		"#version 120\n"
+		//"#version 120\n"
 		"varying vec4 vary_color;"
 		"void main(){"
 		"  gl_FragColor = vary_color;"

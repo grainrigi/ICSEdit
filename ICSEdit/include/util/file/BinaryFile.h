@@ -28,7 +28,7 @@ namespace file{
 		ICSE::container::Uint8Array m_data;
 
 	public:
-		static BinaryFile loadFromFile(const std::string &fileName);
+		static BinaryFile LoadFromFile(const std::string &fileName);
 
 		BinaryFile(void);
 		~BinaryFile(void) = default;
