@@ -192,6 +192,7 @@
     <ClCompile Include="cpp\graphics\gl\GLHandler.cpp" />
     <ClCompile Include="cpp\graphics\gl\GLInitWindow.cpp" />
     <ClCompile Include="cpp\ICSE\TestWindow.cpp" />
+    <ClCompile Include="cpp\wnd\AWSizableControl.cpp" />
     <ClCompile Include="cpp\wnd\WindowManager.cpp" />
     <ClCompile Include="cpp\graphics\MemCanvasRGBA8.cpp" />
     <ClCompile Include="cpp\graphics\MemCanvas.cpp" />
@@ -200,6 +201,9 @@
     <ClCompile Include="cpp\graphics\MemSubCanvasA8.cpp" />
     <ClCompile Include="cpp\util\font\FontRenderer.cpp" />
     <ClCompile Include="cpp\util\font\UTF8Reader.cpp" />
+    <ClCompile Include="cpp\wnd\AWControl.cpp" />
+    <ClCompile Include="cpp\wnd\AWCanvasControl.cpp" />
+    <ClCompile Include="cpp\wnd\WStaticText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -231,6 +235,7 @@
     <ClInclude Include="include\graphics\gl\GLHandler.h" />
     <ClInclude Include="include\graphics\gl\GLInitWindow.h" />
     <ClInclude Include="include\ICSE\TestWindow.h" />
+    <ClInclude Include="include\wnd\AWSizableControl.h" />
     <ClInclude Include="include\wnd\WindowManager.h" />
     <ClInclude Include="include\graphics\MemCanvasRGBA8.h" />
     <ClInclude Include="include\graphics\MemCanvas.h" />
@@ -238,6 +243,9 @@
     <ClInclude Include="include\graphics\MemCanvasA8.h" />
     <ClInclude Include="include\graphics\MemSubCanvasA8.h" />
     <ClInclude Include="include\util\font\UTF8Reader.h" />
+    <ClInclude Include="include\wnd\AWControl.h" />
+    <ClInclude Include="include\wnd\AWCanvasControl.h" />
+    <ClInclude Include="include\wnd\WStaticText.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

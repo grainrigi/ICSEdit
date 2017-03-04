@@ -169,6 +169,18 @@
     <ClCompile Include="cpp\util\font\UTF8Reader.cpp">
       <Filter>Sources\util\font</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\wnd\AWControl.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\wnd\AWCanvasControl.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\wnd\WStaticText.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\wnd\AWSizableControl.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
@@ -269,6 +281,18 @@
     </ClInclude>
     <ClInclude Include="include\util\font\FontRenderer.h">
       <Filter>Headers\util\font</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\AWControl.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\AWCanvasControl.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\WStaticText.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\AWSizableControl.h">
+      <Filter>Headers\wnd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
