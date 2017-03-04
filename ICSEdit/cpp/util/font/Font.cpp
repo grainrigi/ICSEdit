@@ -18,7 +18,6 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "util/basic/Singleton.h"
-#include "util/font/FreeType.h"
 #include "util/font/Font.h"
 
 using namespace ICSE;
@@ -41,14 +40,7 @@ Font ICSE::font::Font::LoafFromFile(const std::string & filepath)
 
 Font ICSE::font::Font::LoadFromFile(const ICSE::file::BinaryFile & file)
 {
-	Font fnt;
-	fnt.m_data.reset(new uint8_t[file.getSize()]);
-	memcpy(fnt.m_data.get(), file.getData(), file.getSize());
-
-	stbtt_InitFont(&fnt.m_info, fnt.m_data.get(), 0);
-	fnt.init();
-
-	return fnt;
+	return LoadFromMemory(file.getData(), file.getSize());
 }
 
 Font ICSE::font::Font::LoadFromMemory(const void * buffer, int size)
@@ -56,9 +48,9 @@ Font ICSE::font::Font::LoadFromMemory(const void * buffer, int size)
 	Font fnt;
 	fnt.m_data.reset(new uint8_t[size]);
 	memcpy(fnt.m_data.get(), buffer, size);
-	FT_Library lib = Singleton<FreeType>::getInstance().library();
 
-	FT_New_Memory_Face(lib, fnt.m_data.get(), size, 0, &fnt.m_face);
+	stbtt_InitFont(&fnt.m_info, fnt.m_data.get(), 0);
+	fnt.init();
 
 	return fnt;
 }

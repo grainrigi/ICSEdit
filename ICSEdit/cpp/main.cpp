@@ -32,7 +32,7 @@ using ICSE::sdl::SDLHandler;
 
 #ifdef main
 #undef main
-#if 0
+#ifndef _DEBUG
 #include <Windows.h>
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdline, int nCmdShow) { return SDL_main(0, 0); }
 #else

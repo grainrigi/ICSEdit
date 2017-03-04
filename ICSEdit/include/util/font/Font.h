@@ -29,7 +29,6 @@ namespace font {
 	class Font {		
 		stbtt_fontinfo m_info;
 		std::unique_ptr<uint8_t> m_data;
-		FT_Face m_face;
 
 		struct VMetrics{
 			int32_t ascent;

@@ -25,8 +25,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include <GL/GL.h>
 #include <GL/GLU.h>
 #include <graphics/vmath.h>
-#include <ft2build.h>
-#include FT_FREETYPE_H
+
 
 /*
 #include <wx/wxprec.h>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
@@ -169,9 +169,6 @@
     <ClCompile Include="cpp\util\font\UTF8Reader.cpp">
       <Filter>Sources\util\font</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\util\font\FreeType.cpp" >
-      <Filter>Sources\util\font</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
@@ -267,13 +264,10 @@
     <ClInclude Include="include\graphics\MemSubCanvasA8.h">
       <Filter>Headers\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="include\util\font\FontRenderer.h">
-      <Filter>Headers\util\font</Filter>
-    </ClInclude>
     <ClInclude Include="include\util\font\UTF8Reader.h">
       <Filter>Headers\util\font</Filter>
     </ClInclude>
-    <ClInclude Include="include\util\font\FreeType.h" >
+    <ClInclude Include="include\util\font\FontRenderer.h">
       <Filter>Headers\util\font</Filter>
     </ClInclude>
   </ItemGroup>

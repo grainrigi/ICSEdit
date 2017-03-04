@@ -179,16 +179,18 @@ void ICSE::TestWindow::OnInit(void)
 
 	m_renderer.reset(new ICSE::graphics::Mesh2DRenderer());
 
-	ICSE::file::BinaryFile png = ICSE::file::BinaryFile::LoadFromFile("live_atlas_liveui.png");
-	ICSE::file::ImageFile img = ICSE::file::ImageFile::LoadFromFile(png, ICSE::file::ImageFile::FORMAT_RGBA);
+	//ICSE::file::BinaryFile png = ICSE::file::BinaryFile::LoadFromFile("live_atlas_liveui.png");
+	//ICSE::file::ImageFile img = ICSE::file::ImageFile::LoadFromFile(png, ICSE::file::ImageFile::FORMAT_RGBA);
 	BinaryFile bfnt = BinaryFile::LoadFromFile("fnt_b.otf");
 	FontRenderer frender(std::shared_ptr<Font>(new Font(Font::LoadFromFile(bfnt))));
 
 	MemCanvasRGBA8 baked(m_width, m_height);
-	baked.ClearWithColor(0x00000000);
-	frender.SetFontHeight(56);
+	baked.ClearWithColor(0xffc53cfe);
+	frender.SetFontHeight(70);
 	frender.SetFontColor(0xffffffff);
+	frender.SetOutlineWidth(8);
 	auto start = std::chrono::high_resolution_clock::now();
+	
 	frender.RenderText(baked, u8R"(お願いシンデレラ！
 夢は夢で終われない
 動き始めてる 輝く日のために
@@ -199,251 +201,13 @@ void ICSE::TestWindow::OnInit(void)
 魔法が解けないように
 リアルなスキルめぐるミラクル信じてる
 お願い！シンデレラ 夢は夢で終われない
-叶えるよ星に願いをかけたなら)");
+叶えるよ星に願いをかけたなら
+見つけようMy Only Star)", 20, 20, 255);
+	//frender.RenderText(baked, u8"決定\n", 20, 20, 255);
 
-	/*
-	stbtt_fontinfo info;
-	if (!stbtt_InitFont(&info, fnt.getData(), 0))
-		THROW(std::runtime_error, "Font Initialization failed.");
-
-	int b_w = m_width;
-	int b_h = m_height;
-	int l_h = 36;
-	int l_h_s = 10;
-
-	uint8_t *bitmap = new uint8_t[b_w * b_h];
-	memset(bitmap, 0, b_w * b_h);
-
-	float scale = stbtt_ScaleForPixelHeight(&info, l_h);
-	char* word = u8"AVAW";
-	int x = 10, y, ascent, descent, lineGap;
-
-
-
-
-	UTF8Reader ur(word);
-	int codepoint1, codepoint2;
-	int c_x1, c_y1, c_x2, c_y2, byteOffset, ax, kern;
-	int basey = 10;
-	int basex = 10;
-
-
-
-	while (true) {
-		//ur = UTF8Reader(word);
-		codepoint2 = ur.readCodePoint();
-		scale = stbtt_ScaleForPixelHeight(&info, l_h);
-		stbtt_GetFontVMetrics(&info, &ascent, &descent, &lineGap);
-		ascent = (int)ascent * scale;
-		descent = (int)descent * scale;
-		while (true)
-		{
-			codepoint1 = codepoint2;
-			if (codepoint1 == 0 || codepoint1 == '\n')
-				break;
-			codepoint2 = ur.readCodePoint();
-			stbtt_GetCodepointBitmapBox(&info, codepoint1, scale, scale, &c_x1, &c_y1, &c_x2, &c_y2);
-			y = basey + ascent + c_y1;
-			byteOffset = x + (y * b_w);
-			if (x + c_x2 > b_w)
-				c_x2 = b_w - x + c_x1;
-			if (y + l_h > b_h)
-				c_y2 = b_h - y + c_y1;
-			stbtt_MakeCodepointBitmap(&info, bitmap + byteOffset, c_x2 - c_x1, c_y2 - c_y1, b_w, scale, scale, codepoint1);
-			stbtt_GetCodepointHMetrics(&info, codepoint1, &ax, 0);
-			x += ax * scale;
-			kern = stbtt_GetCodepointKernAdvance(&info, codepoint1, codepoint2);
-			x += kern * scale;
-			if (x > b_w)
-				break;
-		}
-		if (codepoint1 == 0)
-			break;
-		//l_h += l_h_s;
-		basey += l_h + l_h_s;
-
-		if (basey > b_h)
-			break;
-		x = basex;
-		//break;
-	}
-
-	MemCanvasRGBA8 cbaked(b_w, b_h);
-	uint32_t *baked = reinterpret_cast<uint32_t*>(cbaked.pixels());
-	for (int i = 0; i < b_w * b_h; i++)
-		baked[i] = 0xffc53cfe;
-	uint32_t pix = 0x00000000;
-	float pixb = 255.0f, pixg = 166.0f, pixr = 166.0f;
-	uint32_t pixi = 0x00ffffff;
-	//for (int i = 0; i < b_w * b_h; i++)
-		//baked[i] = pix | (bitmap[i] << 24);
-	int edge = 5;
-	int eds = b_w * edge;
-	uint32_t ret = 0;
 	
-	/*for(y = edge; y < b_h - edge; y++)
-	{
-		for(x = edge; x < b_w - edge; x++)
-		{
-			ret = pix | bitmap[y * b_w + x] << 24;
-			baked[(y - edge) * b_w + (x - edge)] = blend(baked[(y - edge) * b_w + (x - edge)], ret);
-			baked[(y - edge) * b_w + (x + edge)] = blend(baked[(y - edge) * b_w + (x + edge)], ret);
-			baked[(y + edge) * b_w + (x - edge)] = blend(baked[(y + edge) * b_w + (x - edge)], ret);
-			baked[(y + edge) * b_w + (x + edge)] = blend(baked[(y + edge) * b_w + (x + edge)], ret);
-		}
-	}*/
-	//for (int i = 0; i < b_w * b_h; i++)
-		//baked[i] = blend(baked[i], pixi | (bitmap[i] << 24));	
-		/*
 	
-
-	if (edge > 1)
-	{
-		edge = edge - 1;
-		uint8_t alpha = 0;
-		float alf = 0.0f;
-		uint16_t alp_mean = 0;
-
-		uint8_t *alp_tbl = new uint8_t[(edge * 2 + 1) * (edge * 2 + 1)];
-		uint8_t *alp_true_tbl = alp_tbl + (edge * 2 + 1) * edge + edge;
-		uint8_t alp_tbl_stride = edge * 2 + 1;
-		uint8_t alp_mag = 255 / (edge * edge * 2);
-		float fradius = (float)edge + 0.5f;
-		float fradius2 = fradius * fradius;
-		float fradmin = (fradius - 1.0f) * (fradius - 1.0f);
-		float fradmax = (fradius + 1.0f) * (fradius + 1.0f);
-		for (int jy = -edge; jy <= edge; jy++)
-		{
-			for (int jx = -edge; jx <= edge; jx++)
-			{
-				int dist = jx * jx + jy * jy;
-				if (dist < fradmin)
-					alp_true_tbl[jx + jy * alp_tbl_stride] = 0xff;
-				else if (dist > fradmax)
-					alp_true_tbl[jx + jy * alp_tbl_stride] = 0x00;
-				else
-					alp_true_tbl[jx + jy * alp_tbl_stride] = 255.1f * (1.0f - ((float)dist - fradmin) / (fradmax - fradmin));
-			}
-		}
-
-		uint32_t pixfull = pix | 0xff000000;
-		uint32_t *bakedptr = baked;
-		uint8_t *bitmapptr = bitmap;
-		uint8_t *alptblptr = alp_true_tbl;
-		for (y = edge; y < b_h - edge; y++)
-		{
-			bakedptr = baked + y * b_w;
-			bitmapptr = bitmap + y * b_w;
-			for (x = edge; x < b_w - edge; x++)
-			{
-				alpha = bitmapptr[x];
-
-
-				//if(alp_mean < 64)
-				//alp_mean = alp_mean << 2;
-				//alp_mean /= 8;
-				/*if(alp_mean < 0.0001f)
-					baked[y * b_w + x] = 0x440000f;
-				else*/ /*if (alpha == 255)
-				{
-					//bakedptr[x] = pixi | 0xff000000;
-				}/*
-				else if (alpha < 255 && alpha > 0)
-				{
-					blend_direct((uint8_t*)(baked +y * b_w + x), pix, 255 - alpha);
-
-					for (int jy = -edge; jy <= edge; jy++)
-					for (int jx = -edge; jx <= edge; jx++)
-					baked[(y + jy) * b_w + x + jx] = blend(baked[(y + jy) * b_w + x + jx], pix | (0xff - (jx*jx + jy*jy) * 31) << 24);
-
-				}
-			*//*
-				else {
-					alp_mean =
-						//bitmap[(y - 1) * b_w + x - 1] +
-						bitmapptr[-b_w + x] +
-						//bitmapptr[-b_w + x + 1] +
-						bitmapptr[x - 1] +
-						bitmapptr[x + 1] +
-						//bitmapptr[b_w + x - 1] +
-						bitmapptr[b_w + x];
-					//bitmap[(y + 1) * b_w + x + 1];
-
-					if (alp_mean == 0) continue;
-					if (alp_mean > 255)
-						alp_mean = 255;
-					if (alp_mean > 1)
-					{
-						bakedptr = baked + (y - edge) * b_w;
-						alptblptr = alp_tbl + edge;
-						for (int jy = -edge; jy <= edge; jy++)
-						{
-							for (int jx = -edge; jx <= edge; jx++)
-							{
-								//baked[(y + jy) * b_w + x + jx] = blend_exp(baked[(y + jy) * b_w + x + jx], pix, (alp_true_tbl[jx + jy * alp_tbl_stride] * alp_mean >> 8));
-								/*if(bitmap[(y + jy) * b_w + jx + x] != 255)
-									blend_direct((uint8_t*)(baked +(y + jy) * b_w + x + jx), pix, (alp_true_tbl[jx + jy * alp_tbl_stride] * alp_mean >> 8));*//*
-								if (bakedptr[x + jx] != pixfull) {
-									if (alptblptr[jx] == 255)
-										bakedptr[x + jx] = pixfull;
-									else if (alptblptr[jx] > 20)
-										blend_direct((uint8_t*)(bakedptr + x + jx), pix, (alptblptr[jx] * alp_mean >> 8));
-								}
-							}
-							bakedptr += b_w;
-							alptblptr += alp_tbl_stride;
-						}
-
-
-						//baked[y * b_w + x] = pix | ((int)alp_mean << 24);
-
-					}
-				}
-
-
-				/*
-				else
-					baked[y * b_w + x] = 0x440000ff;
-					*/
-					/*
-			}
-		}
-		for (int i = 0; i < b_w * b_h; i++)
-		{
-			if (bitmap[i] != 0)
-				blend_direct((uint8_t*)(baked + i), pixi, (bitmap[i]));
-		}
-		delete alp_tbl;
-	}
-	else{
-		uint8_t alpha;
-		uint8_t *bitmapptr = bitmap;
-		uint32_t alp_mean;
-		for(y = 1; y < b_h - 1; y++)
-		{
-			bitmapptr = bitmap + y * b_w;
-			for(x = 1; x < b_w - 1; x++)
-			{
-				alpha = bitmapptr[x];
-				if (alpha == 0)
-				{
-					alp_mean = bitmapptr[-b_w + x];
-					alp_mean = alp_mean >= bitmapptr[x - 1] ? alp_mean : bitmapptr[x - 1];
-					alp_mean = alp_mean >= bitmapptr[x + 1] ? alp_mean : bitmapptr[x + 1];
-					alp_mean = alp_mean >= bitmapptr[b_w + x] ? alp_mean : bitmapptr[b_w + x];
-					if (alp_mean > 0)
-						blend_direct((uint8_t*)(baked + y * b_w + x), pix, alp_mean);
-				}
-				else if (alpha == 255)
-					baked[y * b_w + x] = pixi | 0xff000000;
-				else
-				{
-					baked[y * b_w + x] = blend_exp(pixi | 0xff000000, pix, 255 - alpha);
-				}
-			}
-		}
-	}
-	*/
+	
 	auto end = std::chrono::high_resolution_clock::now();
 
 	m_shader.use();
