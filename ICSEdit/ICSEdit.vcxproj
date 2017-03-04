@@ -176,6 +176,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="cpp\util\basic\Delegate.cpp" />
     <ClCompile Include="cpp\util\container\Uint8Array.cpp" />
     <ClCompile Include="cpp\util\file\BinaryFile.cpp" />
     <ClCompile Include="cpp\util\file\ImageFile.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="include\sdl\SDLWindow.h" />
     <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\util\basic\console_log.h" />
+    <ClInclude Include="include\util\basic\Delegate.h" />
     <ClInclude Include="include\util\basic\Singleton.h" />
     <ClInclude Include="include\util\container\FixedAllocator.h" />
     <ClInclude Include="include\util\container\Uint8Array.h" />

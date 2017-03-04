@@ -181,6 +181,9 @@
     <ClCompile Include="cpp\wnd\AWSizableControl.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\util\basic\Delegate.cpp">
+      <Filter>Sources\util\basic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
@@ -293,6 +296,9 @@
     </ClInclude>
     <ClInclude Include="include\wnd\AWSizableControl.h">
       <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\basic\Delegate.h">
+      <Filter>Headers\util\basic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
