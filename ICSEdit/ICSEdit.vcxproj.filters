@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
@@ -181,6 +181,9 @@
     <ClCompile Include="cpp\wnd\AWSizableControl.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\wnd\BoundingBox.cpp" >
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="include\util\basic\Delegate.h">
       <Filter>Headers\util\basic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\BoundingBox.h" >
+      <Filter>Headers\wnd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
