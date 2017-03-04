@@ -21,6 +21,16 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 using namespace ICSE::wnd;
 
+ICSE::wnd::BoundingBox::BoundingBox(void)
+	: x{0}, y{0}, w{0}, h{0}
+{
+}
+
+ICSE::wnd::BoundingBox::BoundingBox(int nx, int ny, int nw, int nh)
+	: x{ nx }, y{ ny }, w{ nw }, h{ nh }
+{
+}
+
 void ICSE::wnd::BoundingBox::SetWidth(int nw)
 {
 	if (nw < 0)

@@ -25,8 +25,9 @@ namespace wnd {
 	class BoundingBox {
 		int x, y;
 		int w, h;
-	 public:
+	public:
 		BoundingBox(void);
+		BoundingBox(int x, int y, int w, int h);
 
 		int GetX(void) const { return x; }
 		int GetY(void) const { return y; }
@@ -38,7 +39,7 @@ namespace wnd {
 		void SetWidth(int nw);
 		void SetHeight(int nh);
 		
-	 private:
+	private:
 		
 	};
 
