@@ -181,9 +181,6 @@
     <ClCompile Include="cpp\wnd\AWSizableControl.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\util\basic\Delegate.cpp">
-      <Filter>Sources\util\basic</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
