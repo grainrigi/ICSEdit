@@ -17,24 +17,11 @@ You should have received a copy of the GNU General Public License
 along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
-#include "wnd/AWControl.h"
-#include "graphics/MemCanvasRGBA8.h"
+#include "wnd/WindowLayer.h"
 
-namespace ICSE {
-namespace wnd {
 
-	class AWCanvasControl : public AWControl {
-		friend class WindowLayer;
-	protected:
-		graphics::MemCanvasRGBA8 m_canvas;
+using namespace ICSE::wnd;
 
-	public:
-		AWCanvasControl(int width, int height);
-
-	private:
-		void OnResize(int w, int h);
-	};
-
-}
+ICSE::wnd::WindowLayer::WindowLayer(void)
+{
 }

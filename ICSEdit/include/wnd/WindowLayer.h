@@ -18,23 +18,30 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#include "wnd/AWControl.h"
-#include "graphics/MemCanvasRGBA8.h"
+#include "wnd/AWSizableControl.h"
 
 namespace ICSE {
 namespace wnd {
 
-	class AWCanvasControl : public AWControl {
-		friend class WindowLayer;
-	protected:
-		graphics::MemCanvasRGBA8 m_canvas;
-
+	class WindowLayer {		
+		std::vector<std::shared_ptr<AWSizableControl>> m_sizables;
 	public:
-		AWCanvasControl(int width, int height);
+		WindowLayer(void);
 
+		template<typename Control, typename ...Args>
+		std::shared_ptr<Control> CreateSizableControl(Args ...args);
+		
 	private:
-		void OnResize(int w, int h);
+		
 	};
+
+	template<typename Control, typename ...Args>
+	inline std::shared_ptr<Control> WindowLayer::CreateSizableControl(Args ...args)
+	{
+		std::shared_ptr<Control> ctl{ new Control(args...) };
+		m_sizables.push_back(ctl);
+		return ctl;
+	}
 
 }
 }
