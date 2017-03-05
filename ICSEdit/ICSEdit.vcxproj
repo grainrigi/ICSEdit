@@ -239,6 +239,7 @@
     <ClInclude Include="include\graphics\gl\GLInitWindow.h" />
     <ClInclude Include="include\ICSE\TestWindow.h" />
     <ClInclude Include="include\wnd\AWSizableControl.h" />
+    <ClInclude Include="include\wnd\WindowLayerImpl.h" />
     <ClInclude Include="include\wnd\WindowManager.h" />
     <ClInclude Include="include\graphics\MemCanvasRGBA8.h" />
     <ClInclude Include="include\graphics\MemCanvas.h" />

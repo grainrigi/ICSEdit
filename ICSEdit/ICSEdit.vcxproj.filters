@@ -309,6 +309,9 @@
     <ClInclude Include="include\wnd\WindowLayer.h">
       <Filter>Headers\wnd</Filter>
     </ClInclude>
+    <ClInclude Include="include\wnd\WindowLayerImpl.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
