@@ -17,27 +17,6 @@ You should have received a copy of the GNU General Public License
 along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "wnd/WindowLayer.h"
-
+#include "wnd/ControlWindow.h"
 
 using namespace ICSE::wnd;
-
-
-ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent)
-	: m_parent{ parent }
-{
-}
-
-void ICSE::wnd::WindowLayer::UpdateAll(void)
-{
-	for (auto sizable : m_sizables)
-		sizable->Update();
-}
-
-void ICSE::wnd::WindowLayer::RenderAll(void)
-{
-	for(auto sizable : m_sizables)
-	{
-
-	}
-}

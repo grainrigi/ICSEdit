@@ -206,6 +206,7 @@
     <ClCompile Include="cpp\wnd\WStaticText.cpp" />
     <ClCompile Include="cpp\wnd\BoundingBox.cpp" />
     <ClCompile Include="cpp\wnd\WindowLayer.cpp" />
+    <ClCompile Include="cpp\wnd\ControlWindow.cpp"  />
     <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp"  />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +254,7 @@
     <ClInclude Include="include\wnd\WStaticText.h" />
     <ClInclude Include="include\wnd\BoundingBox.h" />
     <ClInclude Include="include\wnd\WindowLayer.h" />
+    <ClInclude Include="include\wnd\ControlWindow.h"  />
     <ClInclude Include="include\graphics\MemCanvasRenderer.h"  />
   </ItemGroup>
   <ItemGroup>

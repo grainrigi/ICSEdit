@@ -18,6 +18,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include "wnd/ControlWindow.h"
 #include "wnd/AWSizableControl.h"
 
 namespace ICSE {
@@ -25,13 +26,15 @@ namespace wnd {
 
 	class WindowLayer {		
 		std::vector<std::shared_ptr<AWSizableControl>> m_sizables;
+		ControlWindow *m_parent;
 	public:
-		WindowLayer(void);
+		WindowLayer(ControlWindow * parent);
 
 		template<typename Control, typename ...Args>
 		std::shared_ptr<Control> CreateSizableControl(Args ...args);
 
-
+		void UpdateAll(void);
+		void RenderAll(void);
 		
 	private:
 		
