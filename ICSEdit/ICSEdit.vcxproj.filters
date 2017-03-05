@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
@@ -187,10 +187,16 @@
     <ClCompile Include="cpp\wnd\WindowLayer.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\wnd\ControlWindow.cpp" >
+    <ClCompile Include="cpp\wnd\ControlWindow.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp" >
+    <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp">
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp" >
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp" >
       <Filter>Sources\graphics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -318,10 +324,16 @@
     <ClInclude Include="include\wnd\WindowLayerImpl.h">
       <Filter>Headers\wnd</Filter>
     </ClInclude>
-    <ClInclude Include="include\wnd\ControlWindow.h" >
+    <ClInclude Include="include\wnd\ControlWindow.h">
       <Filter>Headers\wnd</Filter>
     </ClInclude>
-    <ClInclude Include="include\graphics\MemCanvasRenderer.h" >
+    <ClInclude Include="include\graphics\MemCanvasRenderer.h">
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h" >
+      <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h" >
       <Filter>Headers\graphics</Filter>
     </ClInclude>
   </ItemGroup>

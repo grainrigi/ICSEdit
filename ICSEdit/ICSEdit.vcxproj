@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Glew_dynamic.2.0.0.0\build\native\Glew_dynamic.props" Condition="Exists('..\packages\Glew_dynamic.2.0.0.0\build\native\Glew_dynamic.props')" />
   <ItemGroup Label="ProjectConfigurations">
@@ -206,8 +206,10 @@
     <ClCompile Include="cpp\wnd\WStaticText.cpp" />
     <ClCompile Include="cpp\wnd\BoundingBox.cpp" />
     <ClCompile Include="cpp\wnd\WindowLayer.cpp" />
-    <ClCompile Include="cpp\wnd\ControlWindow.cpp"  />
-    <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp"  />
+    <ClCompile Include="cpp\wnd\ControlWindow.cpp" />
+    <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp" />
+    <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp"  />
+    <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp"  />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -254,8 +256,10 @@
     <ClInclude Include="include\wnd\WStaticText.h" />
     <ClInclude Include="include\wnd\BoundingBox.h" />
     <ClInclude Include="include\wnd\WindowLayer.h" />
-    <ClInclude Include="include\wnd\ControlWindow.h"  />
-    <ClInclude Include="include\graphics\MemCanvasRenderer.h"  />
+    <ClInclude Include="include\wnd\ControlWindow.h" />
+    <ClInclude Include="include\graphics\MemCanvasRenderer.h" />
+    <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h"  />
+    <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h"  />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

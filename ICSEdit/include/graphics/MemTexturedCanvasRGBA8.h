@@ -1,0 +1,47 @@
+/* 
+(c) 2016,2017 Grain
+
+This file is part of ICSEdit.
+
+ICSEdit is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ICSEdit is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#pragma once
+#include "graphics/MemCanvasRGBA8.h"
+#include "graphics/MemCanvasRenderTexturePool.h"
+
+namespace ICSE {
+namespace graphics {
+	class MemCanvasRenderTexturePool;
+
+	class MemTexturedCanvasRGBA8 : private MemCanvasRGBA8 {
+		friend class MemCanvasRenderTexturePool;
+
+		MemCanvasRenderTexturePool::TextureUnit *m_txunit;
+		int m_spaceid;
+		bool m_locking;
+	public:
+		~MemTexturedCanvasRGBA8(void);
+
+		MemTexturedCanvasRGBA8(MemTexturedCanvasRGBA8 &&) = default;
+
+		MemCanvasRGBA8 *Lock(void);
+		void Unlock(void);
+		
+	private:
+		MemTexturedCanvasRGBA8(int width, int height);
+	};
+
+}
+}
