@@ -33,6 +33,11 @@ namespace graphics {
 		MemCanvas(int channels, int width, int height);
 		virtual ~MemCanvas(void);
 
+		MemCanvas(const MemCanvas &) = delete;
+		MemCanvas &operator=(const MemCanvas&) = delete;
+		MemCanvas(MemCanvas &&);
+		MemCanvas &operator=(MemCanvas &&);
+
 		virtual int channels(void) const { return m_channels; }
 		virtual int width(void) const { return m_width; }
 		virtual int height(void) const { return m_height; }

@@ -29,6 +29,9 @@ namespace graphics {
 		MemCanvasRGBA8(int width, int height);
 		virtual ~MemCanvasRGBA8(void) {};
 
+		MemCanvasRGBA8(MemCanvasRGBA8 &&) = default;
+		MemCanvasRGBA8 &operator=(MemCanvasRGBA8 &&) = default;
+
 		virtual MemSubCanvasRGBA8 GetSubPixels(int x, int y, int width, int height);
 		void ClearWithColor(uint32_t color);
 		

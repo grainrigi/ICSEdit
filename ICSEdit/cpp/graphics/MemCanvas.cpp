@@ -39,6 +39,30 @@ ICSE::graphics::MemCanvas::~MemCanvas(void)
 	}
 }
 
+ICSE::graphics::MemCanvas::MemCanvas(MemCanvas &&c)
+{
+	m_channels = c.m_channels;
+	m_width = c.m_width;
+	m_height = c.m_height;
+	m_pixels = c.m_pixels;
+	c.m_pixels = nullptr;
+	m_needDelete = c.m_needDelete;
+	c.m_needDelete = false;
+}
+
+MemCanvas & ICSE::graphics::MemCanvas::operator=(MemCanvas &&)
+{
+	m_channels = c.m_channels;
+	m_width = c.m_width;
+	m_height = c.m_height;
+	m_pixels = c.m_pixels;
+	c.m_pixels = nullptr;
+	m_needDelete = c.m_needDelete;
+	c.m_needDelete = false;
+
+	return *this;
+}
+
 ICSE::graphics::MemCanvas::MemCanvas(int channels, int width, int height, void * mem)
 	: m_channels{channels},
 	m_width{width},

@@ -35,6 +35,7 @@ namespace graphics {
 		~MemTexturedCanvasRGBA8(void);
 
 		MemTexturedCanvasRGBA8(MemTexturedCanvasRGBA8 &&) = default;
+		MemTexturedCanvasRGBA8 &operator=(MemTexturedCanvasRGBA8 &&) = default;
 
 		MemCanvasRGBA8 *Lock(void);
 		void Unlock(void);
