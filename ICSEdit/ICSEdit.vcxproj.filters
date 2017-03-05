@@ -187,6 +187,9 @@
     <ClCompile Include="cpp\wnd\WindowLayer.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp" >
+      <Filter>Sources\graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
@@ -311,6 +314,9 @@
     </ClInclude>
     <ClInclude Include="include\wnd\WindowLayerImpl.h">
       <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\MemCanvasRenderer.h" >
+      <Filter>Headers\graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

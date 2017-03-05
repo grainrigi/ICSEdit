@@ -1,4 +1,4 @@
-/*
+/* 
 (c) 2016,2017 Grain
 
 This file is part of ICSEdit.
@@ -17,25 +17,29 @@ You should have received a copy of the GNU General Public License
 along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "graphics/DrawEnv.h"
+#pragma once
+#include "wnd/BoundingBox.h"
+#include "graphics/MemCanvasRGBA8.h"
+#include "graphics/gl/GLShaderSet.h"
+#include "graphics/gl/GLTexture.h"
+#include "graphics/drawenv.h"
+#include "graphics/Mesh2DRenderer.h"
 
-using namespace ICSE::graphics;
+namespace ICSE {
+namespace graphics {
 
-DrawEnv::DrawEnv(void)
-	: m_texture(0),
-	m_program(0)
-{
+	class MemCanvasRenderer {
+		Mesh2DRenderer *m_renderer;
+		gl::GLTexture m_texture;
+		Mesh2D m_mesh;
+	public:
+		MemCanvasRenderer(Mesh2DRenderer *renderer);
+
+		void Render(DrawEnv *env, const MemCanvasRGBA8 &canvas, const wnd::BoundingBox &bb);
+		
+	private:
+		
+	};
+
 }
-
-void ICSE::graphics::DrawEnv::setTexture(GLuint texture)
-{
-	if (m_texture != texture)
-		glBindTexture(GL_TEXTURE_2D, texture);
-}
-
-void ICSE::graphics::DrawEnv::setShader(const ICSE::graphics::gl::GLShaderSet & shader)
-{
-	if(m_program != shader.program())
-		glUseProgram(shader.program());
-	m_program = shader.program();
 }
