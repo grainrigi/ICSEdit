@@ -68,7 +68,7 @@ void ICSE::graphics::Mesh2DRenderer::draw(DrawEnv * env, Mesh2D & mesh)
 		mesh.bindIdxBuf();
 	}
 	else
-		glDrawArrays(GL_TRIANGLES, 0, mesh.vertCount());
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh.vertCount());
 }
 
 void ICSE::graphics::Mesh2DRenderer::draw(DrawEnv * env, Mesh2D & mesh, const gl::GLShaderSet & shader, const Mesh2D::ShaderAttributes & attr)
