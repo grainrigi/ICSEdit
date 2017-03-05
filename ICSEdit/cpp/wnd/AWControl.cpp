@@ -22,9 +22,15 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 using namespace ICSE::wnd;
 
 ICSE::wnd::AWControl::AWControl(void)
+	: m_id{ AWControl::ObtainNewID() }
 {
 	Move += [&](int x, int y) { this->move(x, y); };
 	Resize += [&](int w, int h) { this->resize(w, h); };
+}
+
+bool ICSE::wnd::AWControl::operator==(const AWControl & ctl)
+{
+	return m_id == ctl.m_id;
 }
 
 void ICSE::wnd::AWControl::move(int x, int y)
@@ -37,4 +43,11 @@ void ICSE::wnd::AWControl::resize(int w, int h)
 {
 	m_bb.SetWidth(w);
 	m_bb.SetHeight(h);
+}
+
+uint32_t ICSE::wnd::AWControl::ObtainNewID(void)
+{
+	static std::atomic_uint32_t id{ 0 };
+	
+	return id++;
 }

@@ -26,6 +26,7 @@ namespace wnd {
 
 	class AWControl {
 		BoundingBox m_bb;
+		uint32_t m_id;
 
 	public:
 		AWControl(void);
@@ -34,6 +35,8 @@ namespace wnd {
 
 		void Update(void) { dUpdate(); }
 		
+		uint32_t id(void) const { return m_id; }
+		bool operator==(const AWControl &ctl);
 
 	protected:
 		Delegate<> dUpdate;
@@ -44,6 +47,8 @@ namespace wnd {
 	private:
 		void move(int x, int y);
 		void resize(int w, int h);
+
+		static uint32_t ObtainNewID(void);
 	};
 
 }
