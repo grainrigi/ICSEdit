@@ -55,6 +55,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include <unordered_map>
 #include <vector>
 #include <chrono>
+#include <atomic>
 
 #include <stdexcept>
 #include <cassert>
