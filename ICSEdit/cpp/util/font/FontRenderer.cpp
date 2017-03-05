@@ -331,13 +331,14 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 	}
 	else
 	{
-		int edge = m_outline_width - 1;
+		int edge = m_outline_width;
 		//expand the edge if possible
-		r_x-=edge; r_y-=edge; r_w+=edge; r_h+=edge;
+		r_x-=edge; r_y-=edge; r_w+=edge + 1; r_h+=edge;
 		if (r_x <= 0) r_x = 0;
 		if (r_y <= 0) r_y = 0;
 		if (r_w + r_x >= b_w) r_w = b_w - r_x;
 		if (r_h + r_y >= b_h) r_h = b_h - r_y;
+		edge--;
 
 		//Build Edge arrays
 		uint8_t *alp_tbl = new uint8_t[(edge * 2 + 1) * (edge * 2 + 1)];
@@ -371,8 +372,6 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 		uint32_t alp_mean;
 		uint32_t out_a, dst_a, src_a;
 
-		uint32_t *pixels = reinterpret_cast<uint32_t*>(canvas.pixels());
-		uint8_t *alpha = reinterpret_cast<uint8_t*>(alphamap.pixels());
 		uint8_t *alp_tbl_ptr = alp_true_tbl;
 		std::unique_ptr<uint8_t> ualp_sub_tbl{ new uint8_t[half_count] };
 		uint8_t *alp_sub_tbl = ualp_sub_tbl.get();
@@ -387,9 +386,6 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 		uint32_t *pixels_sub_ptr = 0;
 		uint32_t edge_stride = realstride - (edge * 2 + 1);
 		uint32_t outline_edge_stride = r_w - (edge * 2 + 1);
-
-		alpha += r_x + (canvas.stride() >> 2) * r_y;
-		pixels = (uint32_t*)canvas.pixels() + r_x + (canvas.stride() >> 2) * r_y;
 
 		{
 			int32_t diff = -edge * r_w - edge, sub_diff = -edge * r_w - edge;
@@ -427,8 +423,13 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 			assert(ualp_diff_tbl.get() + fullcount + half_count == alp_diff_sub_tbl);
 		}
 
+		uint32_t *pixels = reinterpret_cast<uint32_t*>(canvas.pixels());
+		uint8_t *alpha = reinterpret_cast<uint8_t*>(alphamap.pixels());
+		alpha += r_x + edge + b_w * (r_y + edge);
+
+
 		uint16_t *outline_ptr = outline;
-		outline += r_x + edge + r_w * (r_y + edge);
+		outline += edge + r_w * (edge);
 		alp_diff_tbl = ualp_diff_tbl.get();
 		int32_t *alp_diff_tbl_ptr = alp_diff_tbl;
 		alp_sub_tbl = ualp_sub_tbl.get();
@@ -436,7 +437,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 		memset(uoutline.get(), 0, r_w * r_h * 2);
 		int32_t *alp_diff_tbl_limit_full = alp_diff_tbl + fullcount;
 		int32_t *alp_diff_tbl_limit_half = alp_diff_tbl_limit_full + half_count;
-		alpha += r_x + edge + r_w * (r_y + edge);
+		
 
 		for (y = r_y + edge; y < r_h + r_y - edge; y++)
 		{
@@ -473,8 +474,8 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 					*outline = 0xff00 | *alpha;
 				}
 			}
-			alpha += stride + (edge * 2 + 1);
-			outline += (edge * 2 + 1);
+			alpha += stride + edge * 2;
+			outline += edge * 2;
 		}
 		std::unique_ptr<uint8_t> ucoltbl{ new uint8_t[256 * 3] };
 		uint8_t *coltbl_r = ucoltbl.get();
@@ -490,7 +491,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 			coltbl_b[i] = (fnt_b * src_a + ol_b * dst_a) / 255;
 		}
 
-		outline = uoutline.get() + r_x + r_w * r_y;
+		outline = uoutline.get();
 		pixels = (uint32_t*)canvas.pixels() + r_x + (canvas.stride() >> 2) * r_y;
 		stride = (canvas.stride() >> 2) - r_w;
 
@@ -541,7 +542,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 				}
 			}
 			pixels += stride;
-			outline += r_x;
+			//outline += r_x;
 		}
 	}
 }
