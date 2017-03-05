@@ -172,6 +172,7 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 		space = it->ObtainNewSpace(width, height);
 		canvas.m_spaceid = space.id;
 		canvas.m_txunit = &(*it);
+		canvas.m_pool = this;
 	}
 
 	return canvas;

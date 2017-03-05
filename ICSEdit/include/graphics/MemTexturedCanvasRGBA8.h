@@ -28,6 +28,7 @@ namespace graphics {
 	class MemTexturedCanvasRGBA8 : private MemCanvasRGBA8 {
 		friend class MemCanvasRenderTexturePool;
 
+		MemCanvasRenderTexturePool *m_pool;
 		MemCanvasRenderTexturePool::TextureUnit *m_txunit;
 		int m_spaceid;
 		bool m_locking;
@@ -39,6 +40,8 @@ namespace graphics {
 
 		MemCanvasRGBA8 *Lock(void);
 		void Unlock(void);
+
+		void Resize(int w, int h);
 		
 	private:
 		MemTexturedCanvasRGBA8(int width, int height);
