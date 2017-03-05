@@ -28,7 +28,7 @@ ICSE::wnd::AWControl::AWControl(void)
 	Resize += [&](int w, int h) { this->resize(w, h); };
 }
 
-bool ICSE::wnd::AWControl::operator==(const AWControl & ctl)
+bool ICSE::wnd::AWControl::operator==(const AWControl & ctl) const
 {
 	return m_id == ctl.m_id;
 }

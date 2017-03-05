@@ -36,7 +36,7 @@ namespace wnd {
 		void Update(void) { dUpdate(); }
 		
 		uint32_t id(void) const { return m_id; }
-		bool operator==(const AWControl &ctl);
+		bool operator==(const AWControl &ctl) const;
 
 	protected:
 		Delegate<> dUpdate;
