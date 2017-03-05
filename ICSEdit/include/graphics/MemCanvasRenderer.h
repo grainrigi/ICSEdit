@@ -20,8 +20,6 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "wnd/BoundingBox.h"
 #include "graphics/MemCanvasRGBA8.h"
-#include "graphics/gl/GLShaderSet.h"
-#include "graphics/gl/GLTexture.h"
 #include "graphics/drawenv.h"
 #include "graphics/Mesh2DRenderer.h"
 
