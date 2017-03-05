@@ -33,6 +33,11 @@ bool ICSE::wnd::AWControl::operator==(const AWControl & ctl) const
 	return m_id == ctl.m_id;
 }
 
+bool ICSE::wnd::AWControl::operator!=(const AWControl & ctl) const
+{
+	return !this->operator==(ctl);
+}
+
 void ICSE::wnd::AWControl::move(int x, int y)
 {
 	m_bb.SetX(x);
