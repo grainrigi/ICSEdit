@@ -18,16 +18,21 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include "wnd/AWControl.h"
+#include "graphics/MemCanvasRGBA8.h"
 
 namespace ICSE {
 namespace wnd {
 
-	class AWCanvasControl {		
-	 public:
-		AWCanvasControl(void);
-		
-	 private:
-		
+	class AWCanvasControl : public AWControl {
+	protected:
+		graphics::MemCanvasRGBA8 m_canvas;
+
+	public:
+		AWCanvasControl(int width, int height);
+
+	private:
+		void OnResize(int w, int h);
 	};
 
 }

@@ -20,3 +20,18 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "wnd/AWCanvasControl.h"
 
 using namespace ICSE::wnd;
+
+ICSE::wnd::AWCanvasControl::AWCanvasControl(int width, int height)
+	: m_canvas(width, height)
+{
+	Resize(width, height);
+
+	Resize += [&](int w, int h) { this->OnResize(w, h); };
+}
+
+void ICSE::wnd::AWCanvasControl::OnResize(int w, int h)
+{
+	if (m_canvas.width() != w || m_canvas.height() != h)
+		m_canvas = graphics::MemCanvasRGBA8(w, h);
+}
+

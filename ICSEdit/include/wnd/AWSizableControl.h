@@ -18,15 +18,19 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include "AWCanvasControl.h"
 
 namespace ICSE {
 namespace wnd {
 
-	class AWSizableControl {		
-	 public:
-		AWSizableControl(void);
+	class AWSizableControl : public AWCanvasControl {		
+	public:
+		AWSizableControl(int width, int height);
 		
-	 private:
+		void Move(int x, int y);
+		void Resize(int w, int h);
+
+	private:
 		
 	};
 

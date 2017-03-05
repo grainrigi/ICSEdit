@@ -18,16 +18,32 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include "wnd/BoundingBox.h"
+#include "util/basic/Delegate.h"
 
 namespace ICSE {
 namespace wnd {
 
-	class AWControl {		
-	 public:
+	class AWControl {
+		BoundingBox m_bb;
+
+	public:
 		AWControl(void);
+
+		const BoundingBox &GetBB(void) const { return m_bb; }
+
+		void Update(void) { dUpdate(); }
 		
-	 private:
-		
+
+	protected:
+		Delegate<> dUpdate;
+
+		//These features are available but the accessibilities can be specified by the derived classes.
+		Delegate<int, int> Move;
+		Delegate<int, int> Resize;
+	private:
+		void move(int x, int y);
+		void resize(int w, int h);
 	};
 
 }

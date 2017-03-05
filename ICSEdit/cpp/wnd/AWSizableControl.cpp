@@ -20,3 +20,18 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "wnd/AWSizableControl.h"
 
 using namespace ICSE::wnd;
+
+ICSE::wnd::AWSizableControl::AWSizableControl(int w, int h)
+	: AWCanvasControl(w, h)
+{
+}
+
+void ICSE::wnd::AWSizableControl::Move(int x, int y)
+{
+	this->AWControl::Move(x, y);
+}
+
+void ICSE::wnd::AWSizableControl::Resize(int w, int h)
+{
+	this->AWControl::Resize(w, h);
+}

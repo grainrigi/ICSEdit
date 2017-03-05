@@ -20,3 +20,21 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "wnd/AWControl.h"
 
 using namespace ICSE::wnd;
+
+ICSE::wnd::AWControl::AWControl(void)
+{
+	Move += [&](int x, int y) { this->move(x, y); };
+	Resize += [&](int w, int h) { this->resize(w, h); };
+}
+
+void ICSE::wnd::AWControl::move(int x, int y)
+{
+	m_bb.SetX(x);
+	m_bb.SetY(y);
+}
+
+void ICSE::wnd::AWControl::resize(int w, int h)
+{
+	m_bb.SetWidth(w);
+	m_bb.SetHeight(h);
+}
