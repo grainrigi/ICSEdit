@@ -2757,6 +2757,23 @@ public:
 
 	}
 
+	Matrix4<T> &operator*=(Matrix4<T> rhs)
+	{
+		Matrix4<T> w;
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				T n = 0;
+				for (int k = 0; k < 4; k++)
+					n += rhs.at(i, k) * at(k, j);
+				w.at(i, j) = n;
+			}
+		}
+		return *this = w;
+
+	}
+
 	//---------------------------[ misc operations ]----------------------------
 
 	/**
