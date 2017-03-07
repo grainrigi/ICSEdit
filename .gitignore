@@ -35,4 +35,6 @@ Release/
 res/
 packages/
 ipch/
+runtime/
 *.db
+*.opendb
