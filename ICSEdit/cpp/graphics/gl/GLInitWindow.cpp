@@ -38,9 +38,11 @@ void ICSE::graphics::gl::GLInitWindow::OnInit(void)
 	if (result != GLEW_OK)
 		THROW(std::runtime_error, "GLEW Init failed.");
 		//__asm { int 3 };
+#ifdef ICSE_REQUIRE_VSYNC
 	if (SDL_GL_SetSwapInterval(1) < 0)
 		THROW(std::runtime_error, "Unable to set VSync");
 		//__asm { int 3 };
+#endif
 
 	SDL_HideWindow(window());
 }
