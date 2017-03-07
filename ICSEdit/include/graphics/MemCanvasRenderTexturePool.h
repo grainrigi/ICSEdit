@@ -56,6 +56,7 @@ namespace graphics {
 		public:
 			TextureUnit(void);
 
+			int id(void) const { return id; }
 			GLuint texhandle(void) const { return m_texture.handle(); }
 			SpaceUnit ObtainNewSpace(int width, int height);
 			void ReleaseSpace(int spaceid);
