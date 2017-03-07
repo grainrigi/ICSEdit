@@ -50,7 +50,7 @@ ICSE::graphics::MemCanvas::MemCanvas(MemCanvas &&c)
 	c.m_needDelete = false;
 }
 
-MemCanvas & ICSE::graphics::MemCanvas::operator=(MemCanvas &&)
+MemCanvas & ICSE::graphics::MemCanvas::operator=(MemCanvas &&c)
 {
 	m_channels = c.m_channels;
 	m_width = c.m_width;
