@@ -19,6 +19,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 #include "graphics/gl/GLTexture.h"
+#include "graphics/MemCanvasRGBA8.h"
 
 namespace ICSE {
 namespace graphics {
