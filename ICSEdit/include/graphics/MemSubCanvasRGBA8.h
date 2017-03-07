@@ -30,6 +30,8 @@ namespace graphics {
 		int m_orgstride;
 	public:
 		virtual ~MemSubCanvasRGBA8(void) {};
+		MemSubCanvasRGBA8(MemSubCanvasRGBA8 &&) = default;
+		MemSubCanvasRGBA8 &operator=(MemSubCanvasRGBA8&&) = default;
 
 		virtual int stride(void) const override { return m_orgstride; }
 

@@ -33,6 +33,9 @@ namespace graphics {
 		MemSubCanvasA8() = delete;
 		virtual ~MemSubCanvasA8(void) {};
 
+		MemSubCanvasA8(MemSubCanvasA8&&) = default;
+		MemSubCanvasA8 &operator=(MemSubCanvasA8&&) = default;
+
 		virtual int stride(void) const override { return m_orgstride; }
 
 	private:
