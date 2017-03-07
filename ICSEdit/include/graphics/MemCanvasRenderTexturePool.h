@@ -47,6 +47,7 @@ namespace graphics {
 
 		class TextureUnit
 		{
+			int id;
 			gl::GLTexture m_texture;
 			uint8_t m_map[BLOCK_HORZ_COUNT * BLOCK_VERT_COUNT];
 			std::unordered_map<int, SpaceUnit> m_spaces;
