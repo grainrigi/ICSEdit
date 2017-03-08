@@ -23,16 +23,19 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 using namespace ICSE::graphics;
 using namespace ICSE::graphics::gl;
 
+ICSE::graphics::MemCanvasRenderer::MemCanvasRenderer(void)
+	: m_renderer{nullptr}
+{
+}
+
 ICSE::graphics::MemCanvasRenderer::MemCanvasRenderer(Mesh2DRenderer *renderer)
 	: m_renderer{renderer}
 {
 	/*m_texture.init();
 	m_texture.uploadImage(nullptr, 2048, 2048, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE);*/
 	
-	m_mesh = Mesh2D(4, Mesh2D::ATTR_POSITION | Mesh2D::ATTR_COORD, GL_DYNAMIC_DRAW);
-	memset(&(*m_mesh.positions())[0], 0, sizeof(Position) * 4);
-	memset(&(*m_mesh.coordinates())[0], 0, sizeof(Coordinate) * 4);
-
+	
+	init();
 }
 
 void ICSE::graphics::MemCanvasRenderer::Render(DrawEnv * env, const MemCanvasRGBA8 & canvas, const wnd::BoundingBox & bb)
@@ -131,6 +134,21 @@ void ICSE::graphics::MemCanvasRenderer::initShader(void)
 
 	glUniform1i(m_shader.getUniformLocation("unif_texture"), 0);
 	m_unif_mat_loc = m_shader.getUniformLocation("unif_disp");
+}
+
+void ICSE::graphics::MemCanvasRenderer::LateInitialize(Mesh2DRenderer * renderer)
+{
+	m_renderer = renderer;
+	init();
+}
+
+void ICSE::graphics::MemCanvasRenderer::init(void)
+{
+	m_mesh = Mesh2D(4, Mesh2D::ATTR_POSITION | Mesh2D::ATTR_COORD, GL_DYNAMIC_DRAW);
+	memset(&(*m_mesh.positions())[0], 0, sizeof(Position) * 4);
+	memset(&(*m_mesh.coordinates())[0], 0, sizeof(Coordinate) * 4);
+
+	initShader();
 }
 
 ICSE::graphics::MemCanvasRenderer::DrawUnit::DrawUnit(std::weak_ptr<MemCanvasRenderTexturePool::TextureUnit> txunit)

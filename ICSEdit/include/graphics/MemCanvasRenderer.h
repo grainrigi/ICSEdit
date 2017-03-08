@@ -50,6 +50,7 @@ namespace graphics {
 
 		std::unordered_map<int, DrawUnit> m_dunits;
 	public:
+		MemCanvasRenderer(void);
 		MemCanvasRenderer(Mesh2DRenderer *renderer);
 
 		void Render(DrawEnv *env, const MemCanvasRGBA8 &canvas, const wnd::BoundingBox &bb);
@@ -58,9 +59,11 @@ namespace graphics {
 		void RenderAll(DrawEnv *env);
 
 		MemCanvasRenderTexturePool &GetPool(void) { return m_pool; }
-		void initShader(void);
+
+		void LateInitialize(Mesh2DRenderer *renderer);
 	private:
-		
+		void init(void);
+		void initShader(void);
 	};
 
 }
