@@ -82,4 +82,30 @@ uint32_t ICSE::sdl::SDLWindow::windowID(void)
 	return SDL_GetWindowID(m_window);
 }
 
+int ICSE::sdl::SDLWindow::width(void)
+{
+	int w;
+	SDL_GetWindowSize(m_window, &w, nullptr);
+	return w;
+}
+
+int ICSE::sdl::SDLWindow::height(void)
+{
+	int h;
+	SDL_GetWindowSize(m_window, nullptr, &h);
+	return h;
+}
+
+void ICSE::sdl::SDLWindow::SetWidth(int w)
+{
+	SDL_SetWindowSize(m_window, w, height());
+}
+
+void ICSE::sdl::SDLWindow::SetHeight(int h)
+{
+	SDL_SetWindowSize(m_window, width(), h);
+}
+
+
+
 

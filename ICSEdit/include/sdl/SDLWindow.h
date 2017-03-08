@@ -42,6 +42,11 @@ namespace sdl{
 		SDL_Window *window(void);
 		uint32_t windowID(void);
 
+		int width(void);
+		int height(void);
+		void SetWidth(int w);
+		void SetHeight(int h);
+
 	private:
 		void initWindow(const char *name, uint32_t width, uint32_t height, int flags);
 	};
