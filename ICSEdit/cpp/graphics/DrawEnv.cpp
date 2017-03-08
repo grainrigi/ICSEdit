@@ -35,7 +35,6 @@ void ICSE::graphics::DrawEnv::setTexture(GLuint texture)
 
 void ICSE::graphics::DrawEnv::setShader(const ICSE::graphics::gl::GLShaderSet & shader)
 {
-	if(m_program != shader.program())
 		glUseProgram(shader.program());
 	m_program = shader.program();
 }
