@@ -61,8 +61,10 @@ namespace graphics {
 			SpaceUnit ObtainNewSpace(int width, int height);
 			void ReleaseSpace(int spaceid);
 			void UpdateTexture(int spaceid, const MemCanvasRGBA8 &canvas);
-		};
 
+			const SpaceUnit &GetSpaceInfo(int spaceid);
+		};
+		
 
 	private:
 		std::vector<std::shared_ptr<TextureUnit>> m_units;

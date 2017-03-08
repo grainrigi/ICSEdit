@@ -144,6 +144,11 @@ void ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::UpdateTexture(int 
 	}
 }
 
+const MemCanvasRenderTexturePool::SpaceUnit & ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::GetSpaceInfo(int spaceid)
+{
+	return m_spaces[spaceid];
+}
+
 ICSE::graphics::MemCanvasRenderTexturePool::MemCanvasRenderTexturePool(void)
 {
 }
