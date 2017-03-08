@@ -41,7 +41,6 @@ namespace graphics {
 		MemCanvasRenderTexturePool(void);
 
 		MemTexturedCanvasRGBA8 ObtainCanvas(int width, int height);
-		void ReleaseSpace(int spaceid);
 
 		struct SpaceUnit
 		{
