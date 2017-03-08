@@ -18,11 +18,11 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#include "wnd/ControlWindow.h"
 #include "wnd/AWSizableControl.h"
 
 namespace ICSE {
 namespace wnd {
+	class ControlWindow;
 
 	class WindowLayer {		
 		std::vector<std::shared_ptr<AWSizableControl>> m_sizables;
