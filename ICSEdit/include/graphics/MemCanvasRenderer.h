@@ -19,22 +19,46 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 #include "wnd/BoundingBox.h"
+#include "graphics/gl/GLShaderSet.h"
 #include "graphics/MemCanvasRGBA8.h"
 #include "graphics/drawenv.h"
 #include "graphics/Mesh2DRenderer.h"
+#include "graphics/MemCanvasRenderTexturePool.h"
 
 namespace ICSE {
 namespace graphics {
 
 	class MemCanvasRenderer {
 		Mesh2DRenderer *m_renderer;
-		gl::GLTexture m_texture;
 		Mesh2D m_mesh;
+
+		int m_unif_mat_loc;
+		MemCanvasRenderTexturePool m_pool;
+		gl::GLShaderSet m_shader;
+
+		class DrawUnit
+		{
+			std::weak_ptr<MemCanvasRenderTexturePool::TextureUnit> m_txunit;
+			Mesh2D m_mesh;
+
+		public:
+			DrawUnit(std::weak_ptr<MemCanvasRenderTexturePool::TextureUnit> txunit);
+
+			void RegisterElement(int spaceid, int texwidth, int texheight, const wnd::BoundingBox &bbox);
+			void DrawRegistered(DrawEnv *env, const MemCanvasRenderer &parent);
+		};
+
+		std::unordered_map<int, DrawUnit> m_dunits;
 	public:
 		MemCanvasRenderer(Mesh2DRenderer *renderer);
 
 		void Render(DrawEnv *env, const MemCanvasRGBA8 &canvas, const wnd::BoundingBox &bb);
-		
+
+		void RegisterElement(MemTexturedCanvasRGBA8 &canvas, const wnd::BoundingBox &bbox, bool autoclip = true);
+		void RenderAll(DrawEnv *env);
+
+		MemCanvasRenderTexturePool &GetPool(void) { return m_pool; }
+		void initShader(void);
 	private:
 		
 	};

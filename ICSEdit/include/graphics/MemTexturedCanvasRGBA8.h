@@ -23,9 +23,11 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace ICSE {
 namespace graphics {
+	class MemCanvasRenderer;
 	class MemCanvasRenderTexturePool;
 
 	class MemTexturedCanvasRGBA8 : private MemCanvasRGBA8 {
+		friend class MemCanvasRenderer;
 		friend class MemCanvasRenderTexturePool;
 
 		MemCanvasRenderTexturePool *m_pool;
