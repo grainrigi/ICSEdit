@@ -28,7 +28,9 @@ ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::TextureUnit(void)
 {
 	memset(m_map, 0, sizeof(uint8_t) * BLOCK_HORZ_COUNT * BLOCK_VERT_COUNT);
 	m_texture.bind();
+	//uint32_t *mem = new uint32_t[textureHeight() * textureWidth()];
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, BLOCK_WIDTH * BLOCK_HORZ_COUNT, BLOCK_HEIGHT * BLOCK_VERT_COUNT, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+	//delete mem;
 }
 
 MemCanvasRenderTexturePool::SpaceUnit ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::ObtainNewSpace(int width, int height)
