@@ -26,10 +26,14 @@ namespace graphics {
 	class MemTexturedCanvasRGBA8;
 
 	class MemCanvasRenderTexturePool {
+	public:
 		static constexpr int BLOCK_WIDTH = 64;
 		static constexpr int BLOCK_HEIGHT = 64;
 		static constexpr int BLOCK_HORZ_COUNT = 32;
 		static constexpr int BLOCK_VERT_COUNT = 32;
+
+		static constexpr int textureWidth(void) { return BLOCK_WIDTH * BLOCK_HORZ_COUNT; }
+		static constexpr int textureHeight(void) { return BLOCK_HEIGHT * BLOCK_VERT_COUNT; }
 
 		
 
