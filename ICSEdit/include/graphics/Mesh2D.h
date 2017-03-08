@@ -24,8 +24,9 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace ICSE{
 namespace graphics{
+	class Mesh2DRenderer;
 
-	class Mesh2D : public IPrimitive {
+	class Mesh2D {
 		uint8_t m_flags;
 
 		template<typename _Ty>
@@ -91,8 +92,8 @@ namespace graphics{
 		void upload(void);
 		bool isUploaded(void) { checkUploaded(); return (m_flags & UPLOADED) == UPLOADED ? true : false; }
 
-		virtual void draw(DrawEnv *env) override;
-		void draw(DrawEnv *env, const gl::GLShaderSet &shader, const ShaderAttributes &attr);
+		virtual void draw(Mesh2DRenderer *renderer, DrawEnv *env);
+		void draw(Mesh2DRenderer *renderer, DrawEnv *env, const gl::GLShaderSet &shader, const ShaderAttributes &attr);
 
 		void bindVertBuf(void);
 		void bindIdxBuf(void);

@@ -270,20 +270,20 @@ void Mesh2D::upload(void)
 	this->m_flags |= UPLOADED;
 }
 
-void Mesh2D::draw(DrawEnv * env)
+void Mesh2D::draw(Mesh2DRenderer *renderer, DrawEnv * env)
 {
 	if(!isUploaded())
 		upload();
 
-	ICSE::Singleton<Mesh2DRenderer>::getInstance().draw(env, *this);
+	renderer->draw(env, *this);
 }
 
-void Mesh2D::draw(DrawEnv * env, const gl::GLShaderSet & shader, const ShaderAttributes & attr)
+void Mesh2D::draw(Mesh2DRenderer *renderer, DrawEnv * env, const gl::GLShaderSet & shader, const ShaderAttributes & attr)
 {
 	if (!isUploaded())
 		upload();
 
-	ICSE::Singleton<Mesh2DRenderer>::getInstance().draw(env, *this, shader, attr);
+	renderer->draw(env, *this, shader, attr);
 }
 
 void Mesh2D::bindVertBuf(void)
