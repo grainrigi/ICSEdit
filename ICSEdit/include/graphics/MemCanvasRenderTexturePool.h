@@ -48,7 +48,7 @@ namespace graphics {
 
 		class TextureUnit
 		{
-			int id;
+			int m_id;
 			gl::GLTexture m_texture;
 			uint8_t m_map[BLOCK_HORZ_COUNT * BLOCK_VERT_COUNT];
 			std::unordered_map<int, SpaceUnit> m_spaces;
@@ -56,7 +56,7 @@ namespace graphics {
 		public:
 			TextureUnit(void);
 
-			int id(void) const { return id; }
+			int id(void) const { return m_id; }
 			GLuint texhandle(void) const { return m_texture.handle(); }
 			SpaceUnit ObtainNewSpace(int width, int height);
 			void ReleaseSpace(int spaceid);

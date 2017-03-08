@@ -24,7 +24,7 @@ using namespace ICSE::graphics;
 
 ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::TextureUnit(void)
 	: m_texture(true),
-	id(ObtainNewID())
+	m_id(ObtainNewID())
 {
 	memset(m_map, 0, sizeof(uint8_t) * BLOCK_HORZ_COUNT * BLOCK_VERT_COUNT);
 	m_texture.bind();
