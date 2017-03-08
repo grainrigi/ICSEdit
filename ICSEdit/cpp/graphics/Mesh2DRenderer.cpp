@@ -117,9 +117,15 @@ void ICSE::graphics::Mesh2DRenderer::draw(DrawEnv * env, Mesh2D & mesh, const gl
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh.vertCount());
 }
 
-ICSE::graphics::Mesh2DRenderer::Mesh2DRenderer(void)
+ICSE::graphics::Mesh2DRenderer::Mesh2DRenderer(bool init)
 {
-	this->initShader();
+	if(init)
+		this->initShader();
+}
+
+void ICSE::graphics::Mesh2DRenderer::LateInitialize(void)
+{
+	initShader();
 }
 
 void ICSE::graphics::Mesh2DRenderer::initShader(void)

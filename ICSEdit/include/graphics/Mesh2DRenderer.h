@@ -36,8 +36,9 @@ namespace graphics {
 		gl::GLShaderSet m_shader_ins_gl3_vc;
 	public:
 		~Mesh2DRenderer(void);
-		Mesh2DRenderer(void);
+		Mesh2DRenderer(bool init = true);
 		
+		void LateInitialize(void);
 
 		void draw(DrawEnv *env, Mesh2D &mesh);
 		void draw(DrawEnv *env, Mesh2D &mesh, const gl::GLShaderSet &shader, const Mesh2D::ShaderAttributes &attr);
