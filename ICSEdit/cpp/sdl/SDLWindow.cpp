@@ -22,10 +22,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 using namespace ICSE::sdl;
 
 
-ICSE::sdl::SDLWindow::SDLWindow(void)
-{
-	
-}
+
 
 ICSE::sdl::SDLWindow::SDLWindow(const char *name, uint32_t width, uint32_t height, int flags)
 {

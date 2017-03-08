@@ -29,7 +29,6 @@ namespace sdl{
 		
 
 	public:
-		SDLWindow(void);
 		SDLWindow(const char *name = "", uint32_t width = 640, uint32_t height = 480, int flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
 		SDL_Event WaitEvent(void);
