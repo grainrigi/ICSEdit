@@ -36,7 +36,7 @@ ICSE::graphics::MemCanvasRenderer::MemCanvasRenderer(Mesh2DRenderer *renderer)
 void ICSE::graphics::MemCanvasRenderer::Render(DrawEnv * env, const MemCanvasRGBA8 & canvas, const wnd::BoundingBox & bb)
 {
 	env->setTexture(m_texture.handle());
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, canvas.width(), canvas.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, canvas.pixels());
+	glTexSubImage2D(GL_TEXTURE_2D, 0, GL_RGBA, canvas.width(), canvas.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, canvas.pixels());
 
 	float rw = (float)bb.GetWidth() / (float)env->width() * 2.0f;
 	float rh = (float)bb.GetHeight() / (float)env->height() * 2.0f;
