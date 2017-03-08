@@ -24,7 +24,8 @@ using namespace ICSE::graphics;
 
 ICSE::graphics::MemTexturedCanvasRGBA8::~MemTexturedCanvasRGBA8(void)
 {
-	m_txunit->ReleaseSpace(m_spaceid);
+	if(!m_txunit.expired())
+		m_txunit.lock()->ReleaseSpace(m_spaceid);
 }
 
 MemCanvasRGBA8 * ICSE::graphics::MemTexturedCanvasRGBA8::Lock(void)
@@ -41,7 +42,7 @@ MemCanvasRGBA8 * ICSE::graphics::MemTexturedCanvasRGBA8::Lock(void)
 void ICSE::graphics::MemTexturedCanvasRGBA8::Unlock(void)
 {
 	m_locking = false;
-	m_txunit->UpdateTexture(m_spaceid, *static_cast<MemCanvasRGBA8*>(this));
+	m_txunit.lock()->UpdateTexture(m_spaceid, *static_cast<MemCanvasRGBA8*>(this));
 }
 
 void ICSE::graphics::MemTexturedCanvasRGBA8::Resize(int w, int h)

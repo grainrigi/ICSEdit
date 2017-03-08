@@ -156,13 +156,13 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 
 	for (auto it = m_units.begin(); it != m_units.end(); it++)
 	{
-		space = it->ObtainNewSpace(width, height);
+		space = (*it)->ObtainNewSpace(width, height);
 
 		//successfully obtained
 		if(space.w != 0)
 		{
 			canvas.m_spaceid = space.id;
-			canvas.m_txunit = &(*it);
+			canvas.m_txunit = *it;
 			found = true;
 			break;
 		}
@@ -170,11 +170,10 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 
 	if(!found)
 	{
-		m_units.push_back(TextureUnit());
-		auto it = m_units.end()--;
-		space = it->ObtainNewSpace(width, height);
+		m_units.push_back(std::shared_ptr<TextureUnit>(new TextureUnit()));
+		space = (*m_units[m_units.size() - 1]).ObtainNewSpace(width, height);
 		canvas.m_spaceid = space.id;
-		canvas.m_txunit = &(*it);
+		canvas.m_txunit = m_units[m_units.size() - 1];
 		canvas.m_pool = this;
 	}
 

@@ -65,7 +65,7 @@ namespace graphics {
 
 
 	private:
-		std::vector<TextureUnit> m_units;
+		std::vector<std::shared_ptr<TextureUnit>> m_units;
 		static int ObtainNewID(void);
 		
 	};

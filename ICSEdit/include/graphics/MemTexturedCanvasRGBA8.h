@@ -29,7 +29,7 @@ namespace graphics {
 		friend class MemCanvasRenderTexturePool;
 
 		MemCanvasRenderTexturePool *m_pool;
-		MemCanvasRenderTexturePool::TextureUnit *m_txunit;
+		std::weak_ptr<MemCanvasRenderTexturePool::TextureUnit> m_txunit;
 		int m_spaceid;
 		bool m_locking;
 	public:
