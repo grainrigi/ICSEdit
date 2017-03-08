@@ -38,6 +38,11 @@ namespace graphics {
 		MemTexturedCanvasRGBA8(MemTexturedCanvasRGBA8 &&) = default;
 		MemTexturedCanvasRGBA8 &operator=(MemTexturedCanvasRGBA8 &&) = default;
 
+		virtual int channels(void) const { return MemCanvasRGBA8::channels(); }
+		virtual int width(void) const { return MemCanvasRGBA8::width(); }
+		virtual int height(void) const { return MemCanvasRGBA8::height(); }
+		virtual int stride(void) const { return channels() * width(); }
+
 		MemCanvasRGBA8 *Lock(void);
 		void Unlock(void);
 
