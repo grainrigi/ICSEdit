@@ -40,7 +40,7 @@ namespace graphics {
 	public:
 		MemCanvasRenderTexturePool(void);
 
-		MemTexturedCanvasRGBA8 ObtainCanvas(int width, int height);
+		virtual MemTexturedCanvasRGBA8 ObtainCanvas(int width, int height);
 
 		struct SpaceUnit
 		{
@@ -58,6 +58,7 @@ namespace graphics {
 
 		public:
 			TextureUnit(void);
+			TextureUnit(uint32_t obtained_id);
 
 			int id(void) const { return m_id; }
 			GLuint texhandle(void) const { return m_texture.handle(); }
@@ -67,10 +68,12 @@ namespace graphics {
 
 			const SpaceUnit &GetSpaceInfo(int spaceid);
 		};
+
+		std::shared_ptr<TextureUnit> GetTxUnit(uint32_t id);
 		
 
 	private:
-		std::vector<std::shared_ptr<TextureUnit>> m_units;
+		std::unordered_map<uint32_t, std::shared_ptr<TextureUnit>> m_units;
 		static int ObtainNewID(void);
 		
 	};

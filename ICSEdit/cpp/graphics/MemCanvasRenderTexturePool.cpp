@@ -33,6 +33,17 @@ ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::TextureUnit(void)
 	//delete mem;
 }
 
+ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::TextureUnit(uint32_t obtained_id)
+	: m_texture(true),
+	m_id(obtained_id)
+{
+	memset(m_map, 0, sizeof(uint8_t) * BLOCK_HORZ_COUNT * BLOCK_VERT_COUNT);
+	m_texture.bind();
+	//uint32_t *mem = new uint32_t[textureHeight() * textureWidth()];
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, BLOCK_WIDTH * BLOCK_HORZ_COUNT, BLOCK_HEIGHT * BLOCK_VERT_COUNT, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+	//delete mem;
+}
+
 MemCanvasRenderTexturePool::SpaceUnit ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::ObtainNewSpace(int width, int height)
 {
 	SpaceUnit space{ 0, 0, 0, 0, 0 };
@@ -161,13 +172,13 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 
 	for (auto it = m_units.begin(); it != m_units.end(); it++)
 	{
-		space = (*it)->ObtainNewSpace(width, height);
+		space = (it->second)->ObtainNewSpace(width, height);
 
 		//successfully obtained
 		if(space.w != 0)
 		{
 			canvas.m_spaceid = space.id;
-			canvas.m_txunit = *it;
+			canvas.m_txunit = it->second;
 			found = true;
 			break;
 		}
@@ -175,7 +186,8 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 
 	if(!found)
 	{
-		m_units.push_back(std::shared_ptr<TextureUnit>(new TextureUnit()));
+		int id = ObtainNewID();
+		m_units.insert(std::make_pair(id, std::shared_ptr<TextureUnit>(new TextureUnit(id))));
 		space = (*m_units[m_units.size() - 1]).ObtainNewSpace(width, height);
 		canvas.m_spaceid = space.id;
 		canvas.m_txunit = m_units[m_units.size() - 1];
@@ -183,6 +195,11 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 	}
 
 	return canvas;
+}
+
+std::shared_ptr<MemCanvasRenderTexturePool::TextureUnit> ICSE::graphics::MemCanvasRenderTexturePool::GetTxUnit(uint32_t id)
+{
+	return m_units.find(id)->second;
 }
 
 int ICSE::graphics::MemCanvasRenderTexturePool::ObtainNewID(void)
