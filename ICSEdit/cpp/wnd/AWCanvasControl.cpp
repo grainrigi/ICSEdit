@@ -22,13 +22,10 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 using namespace ICSE::wnd;
 using namespace ICSE::graphics;
 
-ICSE::wnd::AWCanvasControl::AWCanvasControl(int width, int height, MemCanvasRenderTexturePool &pool)
-	: m_canvas{pool.ObtainCanvas(width, height)}
+ICSE::wnd::AWCanvasControl::AWCanvasControl()
+	: m_canvas{}
 {
-	Resize(width, height);
-
-	Resize += [&](int w, int h) { this->OnResize(w, h); };
-	Move += [&](int x, int y) { this->OnMove(x, y); };
+	
 }
 
 ICSE::wnd::AWCanvasControl::~AWCanvasControl(void)
@@ -37,6 +34,16 @@ ICSE::wnd::AWCanvasControl::~AWCanvasControl(void)
 	{
 		m_observer.lock()->NotifyDeletion(this->m_canvas.txunitid(),this->id());
 	}
+}
+
+void ICSE::wnd::AWCanvasControl::InitCanvas(int width, int height, graphics::MemCanvasRenderTexturePool & pool)
+{
+	this->m_canvas = pool.ObtainCanvas(width, height);
+
+	Resize(width, height);
+
+	Resize += [&](int w, int h) { this->OnResize(w, h); };
+	Move += [&](int x, int y) { this->OnMove(x, y); };
 }
 
 void ICSE::wnd::AWCanvasControl::OnResize(int w, int h)
