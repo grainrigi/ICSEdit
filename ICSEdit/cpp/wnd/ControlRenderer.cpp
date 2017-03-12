@@ -54,8 +54,9 @@ void ICSE::wnd::ControlObserver::Invalidate(void)
 	m_renderer = nullptr;
 }
 
-ICSE::wnd::ControlRenderer::ControlRenderer(void)
+ICSE::wnd::ControlRenderer::ControlRenderer(ControlRendererShader *shader)
 	: m_observer{new ControlObserver(this)},
+	m_shader(shader),
 	m_pool(this)
 {
 }
@@ -90,12 +91,13 @@ void ICSE::wnd::ControlRenderer::RemoveControl(uint32_t txunitid, uint32_t contr
 
 void ICSE::wnd::ControlRenderer::RenderAll(DrawEnv *env)
 {
-	m_shader.use();
+	m_shader->use();
 
 	Matrix4f mat;
 	mat.identity();
 	mat *= Matrix4f::createScale(2.0f / (float)env->width(), 2.0f / -(float)env->height(), 1.0f);
 	glUniform2f(m_unif_mat_loc, 2.0f / (float)env->width(), 2.0f / -(float)env->height());
+	glUniform2f(m_shader->GetUnifDispLocation(), 2.0f / (float)env->width(), 2.0f / -(float)env->height());
 
 	for (auto &unit : m_drawunits)
 		unit.second.RenderAll(m_shader);
@@ -175,36 +177,6 @@ void ICSE::wnd::ControlRenderer::fullGC(void)
 
 void ICSE::wnd::ControlRenderer::initShader(void)
 {
-	std::string vShader{
-		"uniform vec2 unif_disp;"
-		"attribute vec4 attr_pos; "
-		"attribute vec2 attr_uv;"
-		"varying vec2 vary_uv;"
-		"void main(){"
-		"  gl_Position = vec4(attr_pos.x * unif_disp.x, attr_pos.y * unif_disp.y, 0.0, 1.0) + vec4(-1.0, 1.0, 0.0, 0.0);"
-		"  vary_uv = attr_uv;"
-		"}"
-	};
-
-	std::string fShader{
-		"uniform sampler2D unif_texture;"
-		"varying vec2 vary_uv;"
-		"void main(){"
-		"  gl_FragColor = texture2D(unif_texture, vary_uv);"
-		"}"
-	};
-
-	m_shader = GLShaderSet::createFromString(
-		vShader,
-		fShader,
-		{
-			{ 0, "attr_pos" },
-			{ 1, "attr_uv" }
-		}
-	);
-
-	glUniform1i(m_shader.getUniformLocation("unif_texture"), 0);
-	m_unif_mat_loc = m_shader.getUniformLocation("unif_disp");
 }
 
 ICSE::wnd::ControlRenderer::DrawUnit::DrawUnit(uint32_t txunitid, ControlRenderer *parent)
@@ -239,7 +211,7 @@ void ICSE::wnd::ControlRenderer::DrawUnit::AddInfo(DrawInfo info)
 	m_infomap[info.control_id] = index;
 }
 
-void ICSE::wnd::ControlRenderer::DrawUnit::RenderAll(graphics::gl::GLShaderSet &shader)
+void ICSE::wnd::ControlRenderer::DrawUnit::RenderAll(ControlRendererShader *shader)
 {
 	glBindTexture(GL_TEXTURE_2D, m_parent->m_pool.GetTxUnit(m_txunitid)->texhandle());
 
@@ -251,7 +223,7 @@ void ICSE::wnd::ControlRenderer::DrawUnit::RenderAll(graphics::gl::GLShaderSet &
 		if (ptr->hasAttribute(DrawInfo::FLAG_DIRTY))
 			updateInfo(i);
 	}
-	shader.use();
+	shader->use();
 	glBindBuffer(GL_ARRAY_BUFFER, m_vbuf.handle());
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibuf.handle());
 
@@ -370,4 +342,47 @@ void ICSE::wnd::ControlRenderer::DrawInfo::unuse(void)
 {
 	setAttribute(FLAG_UNUSED | FLAG_DIRTY);
 	control_id = 0;
+}
+
+ICSE::wnd::ControlRendererShader::ControlRendererShader(void)
+{
+}
+
+void ICSE::wnd::ControlRendererShader::LateInitialize(void)
+{
+	std::string vShader{
+		"uniform vec2 unif_disp;"
+		"attribute vec4 attr_pos; "
+		"attribute vec2 attr_uv;"
+		"varying vec2 vary_uv;"
+		"void main(){"
+		"  gl_Position = vec4(attr_pos.x * unif_disp.x, attr_pos.y * unif_disp.y, 0.0, 1.0) + vec4(-1.0, 1.0, 0.0, 0.0);"
+		"  vary_uv = attr_uv;"
+		"}"
+	};
+
+	std::string fShader{
+		"uniform sampler2D unif_texture;"
+		"varying vec2 vary_uv;"
+		"void main(){"
+		"  gl_FragColor = texture2D(unif_texture, vary_uv);"
+		"}"
+	};
+
+	m_shader = GLShaderSet::createFromString(
+		vShader,
+		fShader,
+		{
+			{ 0, "attr_pos" },
+			{ 1, "attr_uv" }
+		}
+	);
+
+	glUniform1i(m_shader.getUniformLocation("unif_texture"), 0);
+	m_unif_mat_loc = m_shader.getUniformLocation("unif_disp");
+}
+
+void ICSE::wnd::ControlRendererShader::use(void)
+{
+	m_shader.use();
 }

@@ -42,6 +42,19 @@ namespace wnd {
 		void Invalidate(void);
 	};
 
+	class ControlRendererShader
+	{
+		graphics::gl::GLShaderSet m_shader;
+		GLuint m_unif_mat_loc;
+	public:
+		ControlRendererShader(void);
+
+		void LateInitialize(void);
+
+		void use(void);
+		GLuint GetUnifDispLocation(void) const { return m_unif_mat_loc; }
+	};
+
 	class ControlRenderer {
 	public:
 		
@@ -102,7 +115,7 @@ namespace wnd {
 
 			void AddInfo(DrawInfo info);
 			void RemoveDrawInfo(uint32_t control_id);
-			void RenderAll(graphics::gl::GLShaderSet &shader);
+			void RenderAll(ControlRendererShader *renderer);
 			DrawInfo &GetDrawInfo(uint32_t control_id);
 			bool scavengeGC(void);
 			void fullGC(void);
@@ -116,11 +129,10 @@ namespace wnd {
 		std::unordered_map<uint32_t, DrawUnit> m_drawunits;
 		std::shared_ptr<ControlObserver> m_observer;
 
-		graphics::gl::GLShaderSet m_shader;
-		GLuint m_unif_mat_loc;
+		ControlRendererShader *m_shader;
 
 	public:
-		ControlRenderer(void);
+		ControlRenderer(ControlRendererShader *shader);
 
 		void LateInitialize(void);
 

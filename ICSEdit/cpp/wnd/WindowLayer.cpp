@@ -24,9 +24,10 @@ using namespace ICSE::wnd;
 using namespace ICSE::graphics;
 
 
-ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent)
+ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent, ControlRendererShader *shader)
 	: m_parent{ parent },
-	m_id(WindowLayer::ObtainID())
+	m_id(WindowLayer::ObtainID()),
+	m_ascent(shader), m_descent(shader)
 {
 }
 

@@ -37,7 +37,7 @@ namespace wnd {
 		std::unordered_map<uint32_t, std::shared_ptr<AWCanvasControl>> m_ascentcontrols;
 		std::unordered_map<uint32_t, std::shared_ptr<AWCanvasControl>> m_descentcontrols;
 	public:
-		WindowLayer(ControlWindow * parent);
+		WindowLayer(ControlWindow * parent, ControlRendererShader *shader);
 
 		template<typename Control, typename ...Args>
 		std::shared_ptr<Control> CreateControl(Args ...args);
