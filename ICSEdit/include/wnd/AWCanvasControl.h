@@ -36,7 +36,7 @@ namespace wnd {
 		std::weak_ptr<ControlObserver> m_observer;
 
 	public:
-		AWCanvasControl(void);
+		AWCanvasControl(int width = 100, int height = 100);
 		~AWCanvasControl(void);
 
 		void InitCanvas(int width, int height, graphics::MemCanvasRenderTexturePool &pool);

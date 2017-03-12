@@ -67,6 +67,8 @@ void ICSE::wnd::ControlRenderer::LateInitialize(void)
 
 void ICSE::wnd::ControlRenderer::AddCanvasControl(const std::shared_ptr<AWCanvasControl> control)
 {
+	control->InitCanvas(control->GetBB().GetWidth(), control->GetBB().GetHeight(), m_pool);
+
 	DrawInfo info;
 	control->m_observer = m_observer;
 	info.control_id = control->id();

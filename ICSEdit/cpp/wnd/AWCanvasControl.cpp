@@ -22,10 +22,10 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 using namespace ICSE::wnd;
 using namespace ICSE::graphics;
 
-ICSE::wnd::AWCanvasControl::AWCanvasControl()
+ICSE::wnd::AWCanvasControl::AWCanvasControl(int width, int height)
 	: m_canvas{}
 {
-	
+	this->AWControl::Resize(width, height);
 }
 
 ICSE::wnd::AWCanvasControl::~AWCanvasControl(void)
