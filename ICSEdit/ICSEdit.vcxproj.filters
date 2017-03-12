@@ -193,11 +193,14 @@
     <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp">
       <Filter>Sources\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp" >
+    <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp">
       <Filter>Sources\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp" >
+    <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp">
       <Filter>Sources\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\wnd\ControlRenderer.cpp">
+      <Filter>Sources\wnd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -330,11 +333,14 @@
     <ClInclude Include="include\graphics\MemCanvasRenderer.h">
       <Filter>Headers\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h" >
+    <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h">
       <Filter>Headers\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h" >
+    <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h">
       <Filter>Headers\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\ControlRenderer.h">
+      <Filter>Headers\wnd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
