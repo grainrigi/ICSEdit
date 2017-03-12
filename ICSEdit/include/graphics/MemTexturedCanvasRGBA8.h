@@ -36,6 +36,8 @@ namespace graphics {
 		bool m_locking;
 	public:
 		~MemTexturedCanvasRGBA8(void);
+		static void operator delete (void *p, void *buf) {};
+		static void operator delete (void *p) {};
 
 		MemTexturedCanvasRGBA8(MemTexturedCanvasRGBA8 &&) = default;
 		MemTexturedCanvasRGBA8 &operator=(MemTexturedCanvasRGBA8 &&) = default;
