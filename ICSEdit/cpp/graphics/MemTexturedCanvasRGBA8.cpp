@@ -28,6 +28,11 @@ ICSE::graphics::MemTexturedCanvasRGBA8::~MemTexturedCanvasRGBA8(void)
 		m_txunit.lock()->ReleaseSpace(m_spaceid);
 }
 
+ICSE::graphics::MemTexturedCanvasRGBA8::MemTexturedCanvasRGBA8(void)
+	: MemCanvasRGBA8(0, 0, nullptr)
+{
+}
+
 MemCanvasRGBA8 * ICSE::graphics::MemTexturedCanvasRGBA8::Lock(void)
 {
 	if (!m_locking)
