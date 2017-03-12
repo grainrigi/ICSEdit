@@ -13,7 +13,7 @@ inline std::shared_ptr<Control> WindowLayer::CreateAscentCanvasControl(Args ...a
 	static_assert(std::is_base_of<ICSE::wnd::AWCanvasControl, Control>::value, "The Control must inherit AWCanvasControl.");
 
 	std::shared_ptr<Control> ctl{ new Control(args...) };
-	m_controls.insert(ctl->id(), ctl);
+	m_controls.insert(std::make_pair(ctl->id(), ctl));
 	m_ascent.AddCanvasControl(ctl);
 	return ctl;
 }
