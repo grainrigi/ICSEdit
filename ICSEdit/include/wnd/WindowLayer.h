@@ -18,23 +18,34 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include "graphics/drawenv.h"
 #include "wnd/AWSizableControl.h"
+#include "wnd/ControlRenderer.h"
 
 namespace ICSE {
 namespace wnd {
 	class ControlWindow;
 
-	class WindowLayer {		
-		std::vector<std::shared_ptr<AWSizableControl>> m_sizables;
+	class WindowLayer {
 		ControlWindow *m_parent;
+
+		ControlRenderer m_ascent;
+		ControlRenderer m_descent;
+
+		std::unordered_map<uint32_t, std::shared_ptr<AWControl>> m_controls;
 	public:
 		WindowLayer(ControlWindow * parent);
 
 		template<typename Control, typename ...Args>
-		std::shared_ptr<Control> CreateSizableControl(Args ...args);
+		std::shared_ptr<Control> CreateControl(Args ...args);
+
+		template<typename Control, typename ...Args>
+		std::shared_ptr<Control> CreateAscentCanvasControl(Args ...args);
+		template<typename Control, typename ...Args>
+		std::shared_ptr<Control> CreateDescentCanvasControl(Args ...args);
 
 		void UpdateAll(void);
-		void RenderAll(void);
+		void RenderAll(graphics::DrawEnv *env);
 		
 	private:
 		

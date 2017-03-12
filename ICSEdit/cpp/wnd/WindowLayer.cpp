@@ -21,6 +21,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 
 using namespace ICSE::wnd;
+using namespace ICSE::graphics;
 
 
 ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent)
@@ -30,14 +31,12 @@ ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent)
 
 void ICSE::wnd::WindowLayer::UpdateAll(void)
 {
-	for (auto sizable : m_sizables)
-		sizable->Update();
+	for (auto &control : m_controls)
+		control.second->Update();
 }
 
-void ICSE::wnd::WindowLayer::RenderAll(void)
+void ICSE::wnd::WindowLayer::RenderAll(DrawEnv *env)
 {
-	for(auto sizable : m_sizables)
-	{
-
-	}
+	m_ascent.RenderAll(env);
+	m_descent.RenderAll(env);
 }
