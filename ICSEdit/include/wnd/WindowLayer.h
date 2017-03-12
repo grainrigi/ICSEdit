@@ -28,6 +28,7 @@ namespace wnd {
 
 	class WindowLayer {
 		ControlWindow *m_parent;
+		uint32_t m_id;
 
 		ControlRenderer m_ascent;
 		ControlRenderer m_descent;
@@ -50,9 +51,11 @@ namespace wnd {
 
 		void UpdateAll(void);
 		void RenderAll(graphics::DrawEnv *env);
+
+		uint32_t id(void) const { return m_id; }
 		
 	private:
-		
+		static uint32_t ObtainID(void);
 	};
 
 #include "wnd/WindowLayerImpl.h"

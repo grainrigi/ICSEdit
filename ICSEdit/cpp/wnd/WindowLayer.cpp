@@ -25,7 +25,8 @@ using namespace ICSE::graphics;
 
 
 ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent)
-	: m_parent{ parent }
+	: m_parent{ parent },
+	m_id(WindowLayer::ObtainID())
 {
 }
 
@@ -70,4 +71,11 @@ void ICSE::wnd::WindowLayer::RenderAll(DrawEnv *env)
 {
 	m_ascent.RenderAll(env);
 	m_descent.RenderAll(env);
+}
+
+uint32_t ICSE::wnd::WindowLayer::ObtainID(void)
+{
+	std::atomic_uint32_t ctr(0);
+
+	return ctr++;
 }
