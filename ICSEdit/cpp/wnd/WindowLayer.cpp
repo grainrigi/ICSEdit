@@ -69,8 +69,8 @@ void ICSE::wnd::WindowLayer::UpdateAll(void)
 
 void ICSE::wnd::WindowLayer::RenderAll(DrawEnv *env)
 {
-	m_ascent.RenderAll(env);
 	m_descent.RenderAll(env);
+	m_ascent.RenderAll(env);
 }
 
 uint32_t ICSE::wnd::WindowLayer::ObtainID(void)
