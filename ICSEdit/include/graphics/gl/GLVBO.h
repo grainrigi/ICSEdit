@@ -96,6 +96,7 @@ namespace gl{
 		}
 		void uploadDataRange(GLsizeiptr size, const GLvoid * data, GLuint offset);
 
+		GLuint handle(void) const { return this->m_buffer; }
 		GLsizeiptr size(void) const { return this->m_size; }
 		void extend(GLsizeiptr size, bool preserve = false);
 		void updateUsage(GLenum usage) { this->m_usage = usage; }
