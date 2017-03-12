@@ -93,10 +93,6 @@ void ICSE::wnd::ControlRenderer::RenderAll(DrawEnv *env)
 {
 	m_shader->use();
 
-	Matrix4f mat;
-	mat.identity();
-	mat *= Matrix4f::createScale(2.0f / (float)env->width(), 2.0f / -(float)env->height(), 1.0f);
-	glUniform2f(m_unif_mat_loc, 2.0f / (float)env->width(), 2.0f / -(float)env->height());
 	glUniform2f(m_shader->GetUnifDispLocation(), 2.0f / (float)env->width(), 2.0f / -(float)env->height());
 
 	for (auto &unit : m_drawunits)
