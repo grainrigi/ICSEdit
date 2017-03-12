@@ -29,6 +29,33 @@ ICSE::wnd::WindowLayer::WindowLayer(ControlWindow * parent)
 {
 }
 
+void ICSE::wnd::WindowLayer::RemoveControl(uint32_t id)
+{
+	auto it = m_controls.find(id);
+	if (it != m_controls.end())
+	{
+		m_controls.erase(it);
+	}
+	else
+	{
+		auto it = m_ascentcontrols.find(id);
+		if(it != m_ascentcontrols.end())
+		{
+			m_ascent.RemoveControl(it->second->m_canvas.txunitid(), id);
+			m_ascentcontrols.erase(it);
+		}
+		else
+		{
+			auto it = m_descentcontrols.find(id);
+			if(it != m_descentcontrols.end())
+			{
+				m_descent.RemoveControl(it->second->m_canvas.txunitid(), id);
+				m_descentcontrols.erase(it);
+			}
+		}
+	}
+}
+
 void ICSE::wnd::WindowLayer::UpdateAll(void)
 {
 	for (auto &control : m_controls)

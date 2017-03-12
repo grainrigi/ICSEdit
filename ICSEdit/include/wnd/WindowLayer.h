@@ -46,6 +46,8 @@ namespace wnd {
 		template<typename Control, typename ...Args>
 		std::shared_ptr<Control> CreateDescentCanvasControl(Args ...args);
 
+		void RemoveControl(uint32_t id);
+
 		void UpdateAll(void);
 		void RenderAll(graphics::DrawEnv *env);
 		
