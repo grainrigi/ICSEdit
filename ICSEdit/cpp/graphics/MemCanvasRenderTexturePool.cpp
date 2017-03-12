@@ -139,7 +139,7 @@ void ICSE::graphics::MemCanvasRenderTexturePool::TextureUnit::ReleaseSpace(int s
 		for (int y = space.y; y < space.y + space.h; y++)
 		{
 			for (int x = space.x; x < space.x + space.w; x++)
-				map[x + y * BLOCK_HORZ_COUNT] = 1;
+				map[x + y * BLOCK_HORZ_COUNT] = 0;
 		}
 		m_spaces.erase(it);
 	}
