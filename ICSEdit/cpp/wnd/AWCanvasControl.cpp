@@ -20,18 +20,36 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "wnd/AWCanvasControl.h"
 
 using namespace ICSE::wnd;
+using namespace ICSE::graphics;
 
-ICSE::wnd::AWCanvasControl::AWCanvasControl(int width, int height)
-	: m_canvas(width, height)
+ICSE::wnd::AWCanvasControl::AWCanvasControl(int width, int height, MemCanvasRenderTexturePool &pool)
+	: m_canvas{pool.ObtainCanvas(width, height)}
 {
 	Resize(width, height);
 
 	Resize += [&](int w, int h) { this->OnResize(w, h); };
+	Move += [&](int x, int y) { this->OnMove(x, y); };
+}
+
+ICSE::wnd::AWCanvasControl::~AWCanvasControl(void)
+{
+	if(!m_observer.expired())
+	{
+		m_observer.lock()->NotifyDeletion(this->m_canvas.txunitid(),this->id());
+	}
 }
 
 void ICSE::wnd::AWCanvasControl::OnResize(int w, int h)
 {
-	if (m_canvas.width() != w || m_canvas.height() != h)
-		m_canvas = graphics::MemCanvasRGBA8(w, h);
+	m_canvas.Resize(w, h);
+	if (!m_observer.expired())
+		m_observer.lock()->NotifyResize(this);
+		
+}
+
+void ICSE::wnd::AWCanvasControl::OnMove(int x, int y)
+{
+	if (!m_observer.expired())
+		m_observer.lock()->NotifyMove(this);
 }
 

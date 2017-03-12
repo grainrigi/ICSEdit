@@ -19,21 +19,29 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 #include "wnd/AWControl.h"
-#include "graphics/MemCanvasRGBA8.h"
+#include "wnd/ControlRenderer.h"
+#include "graphics/MemTexturedCanvasRGBA8.h"
+#include "graphics/MemCanvasRenderTexturePool.h"
 
 namespace ICSE {
 namespace wnd {
+	class ControlRenderer;
+	class ControlObserver;
 
 	class AWCanvasControl : public AWControl {
 		friend class WindowLayer;
+		friend class ControlRenderer;
 	protected:
-		graphics::MemCanvasRGBA8 m_canvas;
+		graphics::MemTexturedCanvasRGBA8 m_canvas;
+		std::weak_ptr<ControlObserver> m_observer;
 
 	public:
-		AWCanvasControl(int width, int height);
+		AWCanvasControl(int width, int height, graphics::MemCanvasRenderTexturePool &pool);
+		~AWCanvasControl(void);
 
 	private:
 		void OnResize(int w, int h);
+		void OnMove(int x, int y);
 	};
 
 }
