@@ -33,6 +33,8 @@ namespace wnd {
 		ControlRenderer m_descent;
 
 		std::unordered_map<uint32_t, std::shared_ptr<AWControl>> m_controls;
+		std::unordered_map<uint32_t, std::shared_ptr<AWCanvasControl>> m_ascentcontrols;
+		std::unordered_map<uint32_t, std::shared_ptr<AWCanvasControl>> m_descentcontrols;
 	public:
 		WindowLayer(ControlWindow * parent);
 

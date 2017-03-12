@@ -33,6 +33,10 @@ void ICSE::wnd::WindowLayer::UpdateAll(void)
 {
 	for (auto &control : m_controls)
 		control.second->Update();
+	for (auto &control : m_ascentcontrols)
+		control.second->Update();
+	for (auto &control : m_descentcontrols)
+		control.second->Update();
 }
 
 void ICSE::wnd::WindowLayer::RenderAll(DrawEnv *env)
