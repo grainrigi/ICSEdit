@@ -189,9 +189,9 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 	{
 		int id = ObtainNewID();
 		m_units.insert(std::make_pair(id, std::shared_ptr<TextureUnit>(new TextureUnit(id))));
-		space = (*m_units[m_units.size() - 1]).ObtainNewSpace(width, height);
+		space = (m_units[id])->ObtainNewSpace(width, height);
 		canvas.m_spaceid = space.id;
-		canvas.m_txunit = m_units[m_units.size() - 1];
+		canvas.m_txunit = m_units[id];
 		canvas.m_pool = this;
 	}
 
