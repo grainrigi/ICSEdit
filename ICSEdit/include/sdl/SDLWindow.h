@@ -37,7 +37,7 @@ namespace sdl{
 
 		void OnInit(void);
 		virtual void Update(void);
-		virtual void OnEvent(SDL_WindowEvent &evt) {};
+		virtual void OnEvent(SDL_Event &evt) {};
 
 		SDL_Window *window(void);
 		uint32_t windowID(void);
