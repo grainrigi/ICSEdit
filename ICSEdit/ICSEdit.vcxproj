@@ -208,8 +208,9 @@
     <ClCompile Include="cpp\wnd\WindowLayer.cpp" />
     <ClCompile Include="cpp\wnd\ControlWindow.cpp" />
     <ClCompile Include="cpp\graphics\MemCanvasRenderer.cpp" />
-    <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp"  />
-    <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp"  />
+    <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp" />
+    <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp" />
+    <ClCompile Include="cpp\wnd\ControlRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -258,8 +259,9 @@
     <ClInclude Include="include\wnd\WindowLayer.h" />
     <ClInclude Include="include\wnd\ControlWindow.h" />
     <ClInclude Include="include\graphics\MemCanvasRenderer.h" />
-    <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h"  />
-    <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h"  />
+    <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h" />
+    <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h" />
+    <ClInclude Include="include\wnd\ControlRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

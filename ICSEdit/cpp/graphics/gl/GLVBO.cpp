@@ -92,10 +92,12 @@ void GLVBO::uploadData(GLsizeiptr size, const GLvoid * data)
 		glBindBuffer(m_target, m_buffer);
 		glBufferData(m_target, size, data, m_usage);
 		this->m_size = size;
+		glBindBuffer(m_target, 0);
 	}
 	else {
 		glBindBuffer(m_target, m_buffer);
 		glBufferSubData(m_target, 0, size, data);
+		glBindBuffer(m_target, 0);
 	}
 }
 
@@ -105,6 +107,7 @@ void GLVBO::uploadDataRange(GLsizeiptr size, const GLvoid * data, GLuint offset)
 
 	glBindBuffer(m_target, m_buffer);
 	glBufferSubData(m_target, offset, size, data);
+	glBindBuffer(m_target, 0);
 }
 
 void GLVBO::extend(GLsizeiptr size, bool preserve)
@@ -133,6 +136,7 @@ void GLVBO::extend(GLsizeiptr size, bool preserve)
 		delete buf;
 	}
 	*/
+	glBindBuffer(m_target, 0);
 
 	this->m_size = size;
 }
