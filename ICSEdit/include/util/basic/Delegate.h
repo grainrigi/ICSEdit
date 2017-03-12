@@ -39,6 +39,11 @@ namespace ICSE {
 			m_funcs.push_back(func);
 		}
 
+		void PrependFunction(func_type func)
+		{
+			m_funcs.insert(m_funcs.begin(), func);
+		}
+
 		/* std::function is not comparable
 		void RemoveFunction(func_type func)
 		{
