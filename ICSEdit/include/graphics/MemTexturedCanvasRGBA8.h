@@ -47,6 +47,9 @@ namespace graphics {
 		virtual int height(void) const { return MemCanvasRGBA8::height(); }
 		virtual int stride(void) const { return channels() * width(); }
 
+		uint32_t txunitid(void) const { return m_txunit.expired() ? 0 : m_txunit.lock()->id(); }
+		uint32_t spaceid(void) const { return m_spaceid; }
+
 		MemCanvasRGBA8 *Lock(void);
 		void Unlock(void);
 
