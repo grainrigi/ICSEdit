@@ -179,6 +179,7 @@ MemTexturedCanvasRGBA8 ICSE::graphics::MemCanvasRenderTexturePool::ObtainCanvas(
 		{
 			canvas.m_spaceid = space.id;
 			canvas.m_txunit = it->second;
+			canvas.m_pool = this;
 			found = true;
 			break;
 		}
