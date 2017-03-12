@@ -48,8 +48,12 @@ void ICSE::graphics::MemTexturedCanvasRGBA8::Unlock(void)
 void ICSE::graphics::MemTexturedCanvasRGBA8::Resize(int w, int h)
 {
 	MemCanvasRenderTexturePool *pool = m_pool;
-	this->~MemTexturedCanvasRGBA8();
-	this->operator=(std::move(pool->ObtainCanvas(w, h)));
+	if (!m_txunit.expired())
+		m_txunit.lock()->ReleaseSpace(m_spaceid);
+	this->MemCanvasRGBA8::~MemCanvasRGBA8();
+	//MemTexturedCanvasRGBA8::operator delete(this, this);
+	auto &&c = pool->ObtainCanvas(w, h);
+	*this = std::move(c);
 }
 
 ICSE::graphics::MemTexturedCanvasRGBA8::MemTexturedCanvasRGBA8(int width, int height)
