@@ -25,7 +25,7 @@ namespace wnd {
 
 	class AWSizableControl : public AWCanvasControl {		
 	public:
-		AWSizableControl(int width, int height);
+		AWSizableControl(int width = 100, int height = 100);
 		
 		void Move(int x, int y);
 		void Resize(int w, int h);
