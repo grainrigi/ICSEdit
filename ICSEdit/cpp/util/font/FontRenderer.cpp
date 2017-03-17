@@ -56,7 +56,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 		b_h = canvas.height(),
 		l_h = m_lineheight;
 	int r_x = 0, r_y = 0, r_w = 0, r_h = 0;
-	basex = r_x = topx; basey = r_y = topy;
+	basex = r_x = topx + m_outline_width; basey = r_y = topy + m_outline_width;
 	x = basex;
 
 	MemCanvasA8 alphamap(b_w, b_h);
