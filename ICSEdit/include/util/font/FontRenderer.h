@@ -46,6 +46,8 @@ namespace font {
 		void SetFontHeight(int height);
 		void SetLineSpace(int space) { m_linespace = space; }
 		void SetFontColor(uint32_t color) { m_font_color = color; }
+
+		void SetFontFamily(std::shared_ptr<Font> font);
 	 private:
 		
 	};

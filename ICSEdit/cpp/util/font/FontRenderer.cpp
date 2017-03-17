@@ -552,3 +552,8 @@ void ICSE::font::FontRenderer::SetFontHeight(int height)
 	m_lineheight = height; 
 	m_font->GetScaleBakeInfo(height, &m_bakeinfo);
 }
+
+void ICSE::font::FontRenderer::SetFontFamily(std::shared_ptr<Font> font)
+{
+	m_font = font;
+}
