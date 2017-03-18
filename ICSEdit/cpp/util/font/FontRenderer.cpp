@@ -198,8 +198,8 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 	{
 		//expand the edge if possible
 		r_x--; r_y--; r_w++; r_h++;
-		if (r_x <= 0) r_x = 0;
-		if (r_y <= 0) r_y = 0;
+		if (r_x <= 0) r_x = 1;
+		if (r_y <= 0) r_y = 1;
 		if (r_w + r_x >= b_w) r_w = b_w - r_x;
 		if (r_h + r_y >= b_h) r_h = b_h - r_y;
 		uint32_t *pixels = reinterpret_cast<uint32_t*>(canvas.pixels());
