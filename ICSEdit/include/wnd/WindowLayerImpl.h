@@ -26,5 +26,5 @@ inline std::shared_ptr<Control> ICSE::wnd::WindowLayer::CreateDescentCanvasContr
 	std::shared_ptr<Control> ctl{ new Control(args...) };
 	m_controls.insert(std::make_pair(ctl->id(), ctl));
 	m_descent.AddCanvasControl(ctl);
-	return std::shared_ptr<Control>();
+	return ctl;
 }
