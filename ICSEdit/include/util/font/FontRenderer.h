@@ -39,6 +39,8 @@ namespace font {
 		//this function does not blend the text
 		void BakeText(ICSE::graphics::MemCanvasRGBA8 &canvas, const char *utf8txt, int topx = 0, int topy = 0, int opaqueness = 255);
 
+		graphics::RECT GetRenderRect(const char *utf8txt);
+
 		//Set the outline
 		//If thickness is zero, the outline won't be drawn.
 		void SetOutlineColor(uint32_t color) { m_outline_color = color; }
