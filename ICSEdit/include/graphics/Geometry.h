@@ -45,6 +45,8 @@ namespace graphics{
 		uint8_t g;
 		uint8_t b;
 		uint8_t a;
+
+		uint32_t UintRepr(void) const { return *(reinterpret_cast<const uint32_t*>(const_cast<ColorDW*>(this))); }
 	};
 	typedef ColorF Color;
 
