@@ -37,6 +37,8 @@ namespace font {
 		
 		//Only opaque render is supported
 		void RenderText(ICSE::graphics::MemCanvasRGBA8 &canvas, const char *utf8txt, int topx = 0, int topy = 0, int opaqueness = 255);
+		//this function does not blend the text
+		void BakeText(ICSE::graphics::MemCanvasRGBA8 &canvas, const char *utf8txt, int topx = 0, int topy = 0, int opaqueness = 255);
 
 		//Set the outline
 		//If thickness is zero, the outline won't be drawn.
