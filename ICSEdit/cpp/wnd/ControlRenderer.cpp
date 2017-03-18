@@ -213,13 +213,16 @@ void ICSE::wnd::ControlRenderer::DrawUnit::RenderAll(ControlRendererShader *shad
 
 	int size = m_infos.size();
 	DrawInfo *ptr = &m_infos[0];
-
+	
+	m_vbuf.extend(sizeof(Vertex) * size * 4);
+	m_ibuf.extend(sizeof(short) * size * 6);
 	for (int i = 0; i < size; i++, ptr++)
 	{
 		if (ptr->hasAttribute(DrawInfo::FLAG_DIRTY))
 			updateInfo(i);
 	}
 	shader->use();
+	
 	glBindBuffer(GL_ARRAY_BUFFER, m_vbuf.handle());
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibuf.handle());
 
@@ -281,7 +284,7 @@ void ICSE::wnd::ControlRenderer::DrawUnit::updateInfo(int index)
 		pos[1].coord.x = tx + tw; pos[1].coord.y = ty;
 		pos[2].coord.x = tx; pos[2].coord.y = ty + th;
 		pos[3].coord.x = tx + tw; pos[3].coord.y = ty + th;
-		m_vbuf.uploadData(sizeof(pos), pos);
+		m_vbuf.uploadDataRange(sizeof(pos), pos, index * sizeof(pos));
 		indices[0] = index * 4;
 		indices[1] = index * 4 + 1;
 		indices[2] = index * 4 + 2;
