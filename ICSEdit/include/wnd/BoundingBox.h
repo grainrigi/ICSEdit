@@ -38,6 +38,8 @@ namespace wnd {
 		void SetY(int ny) { y = ny; }
 		void SetWidth(int nw);
 		void SetHeight(int nh);
+
+		bool isIncludePoint(int x, int y) const;
 		
 	private:
 		

@@ -44,3 +44,10 @@ void ICSE::wnd::BoundingBox::SetHeight(int nh)
 		THROW(std::invalid_argument, "the specified height is below 0.");
 	h = nh;
 }
+
+bool ICSE::wnd::BoundingBox::isIncludePoint(int xx, int yy) const
+{
+	if(xx < x || xx > x + w || yy < y || yy > y + h)
+		return false;
+	return true;
+}
