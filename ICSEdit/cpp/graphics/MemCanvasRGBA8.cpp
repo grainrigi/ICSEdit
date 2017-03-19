@@ -56,7 +56,7 @@ void ICSE::graphics::MemCanvasRGBA8::BitBlt(MemCanvasRGBA8 & dst, int dstx, int 
 	assert(dsty + h <= dst.height());
 	assert(srcy + h <= src.height());
 
-	for(int y = 0; y < w; y++)
+	for(int y = 0; y < h; y++)
 	{
 		memcpy(dptr, sptr, w * sizeof(uint32_t));
 		dptr += dstride;
