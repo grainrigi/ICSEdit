@@ -34,6 +34,12 @@ namespace graphics {
 
 		virtual MemSubCanvasRGBA8 GetSubPixels(int x, int y, int width, int height);
 		void ClearWithColor(uint32_t color);
+
+		static void BitBlt(
+			MemCanvasRGBA8 &dst,
+			int dstx, int dsty, int w, int h,
+			MemCanvasRGBA8 &src,
+			int srcx, int srcy);
 		
 	 protected:
 		 MemCanvasRGBA8(int width, int height, void *mem);

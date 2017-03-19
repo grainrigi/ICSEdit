@@ -44,6 +44,26 @@ void ICSE::graphics::MemCanvasRGBA8::ClearWithColor(uint32_t color)
 	}
 }
 
+void ICSE::graphics::MemCanvasRGBA8::BitBlt(MemCanvasRGBA8 & dst, int dstx, int dsty, int w, int h, MemCanvasRGBA8 & src, int srcx, int srcy)
+{
+	int dstride = dst.stride();
+	int sstride = src.stride();
+	uint8_t *dptr = reinterpret_cast<uint8_t*>(dst.pixelAt(dstx, dsty));
+	uint8_t *sptr = reinterpret_cast<uint8_t*>(src.pixelAt(srcx, srcy));
+
+	assert(dstx + w <= dst.width());
+	assert(srcx + w <= src.width());
+	assert(dsty + h <= dst.height());
+	assert(srcy + h <= src.height());
+
+	for(int y = 0; y < w; y++)
+	{
+		memcpy(dptr, sptr, w * sizeof(uint32_t));
+		dptr += dstride;
+		sptr += sstride;
+	}
+}
+
 ICSE::graphics::MemCanvasRGBA8::MemCanvasRGBA8(int width, int height, void * mem)
 	: MemCanvas(4, width, height, mem)
 {
