@@ -22,9 +22,10 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #include "sdl/SDLHandler.h"
 #include "sdl/SDLWindow.h"
 #include "graphics/gl/GLHandler.h"
-#include "ICSE/TestWindow.h"
+#include "TestControlWindow.h"
 #include "wnd/WindowManager.h"
 #include "graphics/Mesh2DRenderer.h"
+#include "util/file/ResourceManager.h"
 
 using ICSE::sdl::SDLHandler;
 
@@ -44,6 +45,7 @@ int main(int argc, char** argv) { return SDL_main(argc, argv); }
 	{
 		try {
 			SDLHandler sdl;
+			ICSE::file::ResourceManagerSingleton::create();
 			ICSE::Singleton<ICSE::graphics::gl::GLHandler>::create();
 
 			ICSE::Singleton<ICSE::wnd::WindowManager>::create();
@@ -51,18 +53,19 @@ int main(int argc, char** argv) { return SDL_main(argc, argv); }
 			ICSE::wnd::WindowManager *wman = ICSE::Singleton<ICSE::wnd::WindowManager>::getInstancePtr();
 			ICSE::Singleton<ICSE::graphics::Mesh2DRenderer>::create();
 
-			auto testwin = wman->CreateAndRegisterWindow<ICSE::TestWindow>();
+			auto testwin = wman->CreateAndRegisterWindow<ICSE::TestControlWindow>();
 
 			while (wman->ProcessEvent());
 
 			ICSE::Singleton<ICSE::wnd::WindowManager>::destroy();
 			ICSE::Singleton<ICSE::graphics::Mesh2DRenderer>::destroy();
 			ICSE::Singleton<ICSE::graphics::gl::GLHandler>::destroy();
+			ICSE::file::ResourceManagerSingleton::destroy();
 
 			testwin.reset();
 			return 0;
 		}
-		catch(std::runtime_error ex)
+		catch(std::runtime_error &ex)
 		{
 			std::cout << ex.what();
 			getchar();
