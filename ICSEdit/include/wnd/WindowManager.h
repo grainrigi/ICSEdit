@@ -31,7 +31,7 @@ namespace wnd {
 		ICSE::sdl::SDLWindow *m_main = nullptr;
 		bool m_quitting = false;
 	 public:
-		
+		 ~WindowManager(void);
 
 		void RegisterWindow(std::shared_ptr<ICSE::sdl::SDLWindow> window, bool isMain = false);
 
