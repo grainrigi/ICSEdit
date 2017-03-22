@@ -43,6 +43,7 @@ namespace wnd {
 		void removeLayer(uint32_t id);
 
 		Delegate<> dUpdate;
+		Delegate<SDL_Event&> dOnEvent;
 
 	public:
 		ControlWindow(const char *name = "", uint32_t width = 640, uint32_t height = 480, int flags = SDL_WINDOW_SHOWN);
@@ -51,6 +52,7 @@ namespace wnd {
 		graphics::MemCanvasRenderer &GetCVSRenderer(void) { return m_cvsrend; }
 
 		virtual void Update(void) override;
+		virtual void OnEvent(SDL_Event &evt) override;
 
 		void MakeCurrent(void);
 	private:

@@ -34,13 +34,15 @@ namespace wnd {
 		const BoundingBox &GetBB(void) const { return m_bb; }
 
 		void Update(void) { dUpdate(); }
-		
+		void OnEvent(SDL_Event &evt) { dOnEvent(evt); }
+
 		uint32_t id(void) const { return m_id; }
 		bool operator==(const AWControl &ctl) const;
 		bool operator!=(const AWControl &ctl) const;
 
 	protected:
 		Delegate<> dUpdate;
+		Delegate<SDL_Event&> dOnEvent;
 
 		//These features are available but the accessibilities can be specified by the derived classes.
 		Delegate<int, int> Move;

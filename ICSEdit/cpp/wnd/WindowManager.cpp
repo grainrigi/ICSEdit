@@ -45,11 +45,24 @@ bool ICSE::wnd::WindowManager::ProcessEvent(void)
 	{
 		if (ev.type == SDL_QUIT)
 			return false;
-		else if (ev.type == SDL_WINDOWEVENT || ev.type == SDL_MOUSEMOTION)
+		else if (ev.type == SDL_WINDOWEVENT
+			|| ev.type == SDL_MOUSEMOTION
+			|| ev.type == SDL_KEYDOWN
+			|| ev.type == SDL_KEYUP
+			|| ev.type == SDL_TEXTEDITING
+			|| ev.type == SDL_TEXTINPUT
+			|| ev.type == SDL_MOUSEBUTTONDOWN
+			|| ev.type == SDL_MOUSEBUTTONUP
+			|| ev.type == SDL_MOUSEWHEEL)
 		{
 			auto it = m_windows.find(ev.window.windowID);
 			if (it != m_windows.end())
 				it->second->OnEvent(ev);
+		}
+		else
+		{
+			for (auto &item : m_windows)
+				item.second->OnEvent(ev);
 		}
 	}
 

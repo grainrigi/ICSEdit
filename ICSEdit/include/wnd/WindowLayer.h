@@ -52,6 +52,8 @@ namespace wnd {
 		void UpdateAll(void);
 		void RenderAll(graphics::DrawEnv *env);
 
+		bool ProcessEvent(SDL_Event &evt);
+
 		uint32_t id(void) const { return m_id; }
 		
 	private:

@@ -29,6 +29,16 @@ void ICSE::wnd::ControlWindow::Update(void)
 	dUpdate();
 }
 
+void ICSE::wnd::ControlWindow::OnEvent(SDL_Event & evt)
+{
+	for(auto &rit : m_layers)
+	{
+		rit.second->ProcessEvent(evt);
+	}
+
+	dOnEvent(evt);
+}
+
 void ICSE::wnd::ControlWindow::MakeCurrent(void)
 {
 	SDL_GL_MakeCurrent(this->window(), m_context);
