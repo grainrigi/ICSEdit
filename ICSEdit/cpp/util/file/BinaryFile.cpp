@@ -1,4 +1,6 @@
 #include "util/file/BinaryFile.h"
+#include "util/file/FileNotFoundException.h"
+#include <boost/filesystem.hpp>
 
 using ICSE::file::BinaryFile;
 
@@ -6,6 +8,10 @@ using ICSE::container::Uint8Array;
 
 BinaryFile BinaryFile::LoadFromFile(const std::string & fileName)
 {
+	boost::filesystem::path fi(fileName);
+	if (!boost::filesystem::exists(fi))
+		THROW(FileNotFoundException, fileName);
+
 	std::ifstream fs(fileName, std::ios::in | std::ios::binary);
 	BinaryFile bf;
 

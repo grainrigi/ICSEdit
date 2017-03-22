@@ -211,6 +211,7 @@
     <ClCompile Include="cpp\graphics\MemTexturedCanvasRGBA8.cpp" />
     <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp" />
     <ClCompile Include="cpp\wnd\ControlRenderer.cpp" />
+    <ClCompile Include="cpp\util\file\FileNotFoundException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -262,6 +263,7 @@
     <ClInclude Include="include\graphics\MemTexturedCanvasRGBA8.h" />
     <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h" />
     <ClInclude Include="include\wnd\ControlRenderer.h" />
+    <ClInclude Include="include\util\file\FileNotFoundException.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
