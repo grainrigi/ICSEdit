@@ -143,7 +143,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 		uint32_t *pixels = reinterpret_cast<uint32_t*>(canvas.pixels());
 		uint8_t *alpha = reinterpret_cast<uint8_t*>(alphamap.pixels());
 		uint32_t out_a, dst_a, src_a;
-		uint32_t pixel, pixfull = m_font_color;
+		uint32_t pixfull = m_font_color;
 		int stride = (canvas.stride() >> 2) - r_w;
 		int astride = b_w - r_w;
 		
@@ -211,7 +211,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 		uint8_t *coltbl_b = ucoltbl.get() + 512;
 
 		uint32_t out_a, dst_a, src_a;
-		uint32_t pixel, alp_mean;
+		uint32_t alp_mean;
 		uint32_t fnt_full = m_font_color | 0xff000000;
 		int stride = (canvas.stride() >> 2) - r_w;
 		int realstride = canvas.stride();
@@ -647,8 +647,8 @@ void ICSE::font::FontRenderer::BakeText(ICSE::graphics::MemCanvasRGBA8 & canvas,
 
 		uint32_t *pixels = reinterpret_cast<uint32_t*>(canvas.pixels());
 		uint8_t *alpha = reinterpret_cast<uint8_t*>(alphamap.pixels());
-		uint32_t out_a, dst_a, src_a;
-		uint32_t pixel, pixfull = m_font_color;
+		uint32_t src_a;
+		uint32_t pixfull = m_font_color;
 		int stride = (canvas.stride() >> 2) - r_w;
 		int astride = b_w - r_w;
 
@@ -709,8 +709,8 @@ void ICSE::font::FontRenderer::BakeText(ICSE::graphics::MemCanvasRGBA8 & canvas,
 		uint8_t *coltbl_g = ucoltbl.get() + 256;
 		uint8_t *coltbl_b = ucoltbl.get() + 512;
 
-		uint32_t out_a, dst_a, src_a;
-		uint32_t pixel, alp_mean;
+		uint32_t dst_a, src_a;
+		uint32_t alp_mean;
 		uint32_t fnt_full = m_font_color | 0xff000000;
 		int stride = (canvas.stride() >> 2) - r_w;
 		int realstride = canvas.stride();
@@ -847,7 +847,7 @@ void ICSE::font::FontRenderer::BakeText(ICSE::graphics::MemCanvasRGBA8 & canvas,
 		}
 
 		uint32_t alp_mean;
-		uint32_t out_a, dst_a, src_a;
+		uint32_t dst_a, src_a;
 
 		uint8_t *alp_tbl_ptr = alp_true_tbl;
 		std::unique_ptr<uint8_t> ualp_sub_tbl{ new uint8_t[half_count] };

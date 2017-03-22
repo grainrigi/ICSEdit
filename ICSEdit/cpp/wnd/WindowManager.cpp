@@ -37,7 +37,6 @@ bool ICSE::wnd::WindowManager::ProcessEvent(void)
 	constexpr std::chrono::nanoseconds frame(16000000);
 
 	SDL_Event ev;
-	SDL_Keycode key;
 
 	auto start = std::chrono::high_resolution_clock::now();
 

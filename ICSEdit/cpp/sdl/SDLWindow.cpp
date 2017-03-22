@@ -33,7 +33,6 @@ ICSE::sdl::SDLWindow::SDLWindow(const char *name, uint32_t width, uint32_t heigh
 SDL_Event ICSE::sdl::SDLWindow::WaitEvent(void)
 {
 	SDL_Event ev;
-	SDL_Keycode key;
 	
 	SDL_PollEvent(&ev);
 
