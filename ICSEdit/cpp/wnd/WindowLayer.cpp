@@ -74,6 +74,16 @@ void ICSE::wnd::WindowLayer::RenderAll(DrawEnv *env)
 	m_ascent.RenderAll(env);
 }
 
+bool ICSE::wnd::WindowLayer::ProcessEvent(SDL_Event & evt)
+{
+	for (auto &ctl : m_controls)
+	{
+		ctl.second->OnEvent(evt);
+	}
+
+	return false;
+}
+
 uint32_t ICSE::wnd::WindowLayer::ObtainID(void)
 {
 	std::atomic_uint32_t ctr(0);
