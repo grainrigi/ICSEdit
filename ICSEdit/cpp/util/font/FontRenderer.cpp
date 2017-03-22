@@ -98,6 +98,13 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 				break;
 		}
 		//The text is end
+		//Prepare for the nextline
+		r_w = r_w > x ? r_w : x;
+		r_w = r_w > b_w ? b_w : r_w;
+		x = basex;
+		basey += m_lineheight + m_linespace;
+		if (basey >= b_h)
+			break;
 		
 		if (codepoint1 != '\n')
 		{
@@ -111,13 +118,7 @@ void ICSE::font::FontRenderer::RenderText(ICSE::graphics::MemCanvasRGBA8 & canva
 			break;
 		
 
-		//Prepare for the nextline
-		r_w = r_w > x ? r_w : x;
-		r_w = r_w > b_w ? b_w : r_w;
-		x = basex;
-		basey += m_lineheight + m_linespace;
-		if (basey >= b_h)
-			break;
+		
 	}
 	r_w -= r_x;
 	r_h = y + m_lineheight;
@@ -604,6 +605,14 @@ void ICSE::font::FontRenderer::BakeText(ICSE::graphics::MemCanvasRGBA8 & canvas,
 		}
 		//The text is end
 
+		//Prepare for the nextline
+		r_w = r_w > x ? r_w : x;
+		r_w = r_w > b_w ? b_w : r_w;
+		x = basex;
+		basey += m_lineheight + m_linespace;
+		if (basey >= b_h)
+			break;
+
 		if (codepoint1 != '\n')
 		{
 			while (codepoint1 != '\n' && codepoint1 != '\0')
@@ -616,13 +625,7 @@ void ICSE::font::FontRenderer::BakeText(ICSE::graphics::MemCanvasRGBA8 & canvas,
 			break;
 
 
-		//Prepare for the nextline
-		r_w = r_w > x ? r_w : x;
-		r_w = r_w > b_w ? b_w : r_w;
-		x = basex;
-		basey += m_lineheight + m_linespace;
-		if (basey >= b_h)
-			break;
+		
 	}
 	r_w -= r_x;
 	r_h = y + m_lineheight;
@@ -1047,6 +1050,12 @@ ICSE::graphics::RECT ICSE::font::FontRenderer::GetRenderRect(const char * utf8tx
 		}
 		//The text is end
 
+		//Prepare for the nextline
+		if (r_w < x)
+			r_w = x;
+		x = basex;
+		basey += m_lineheight + m_linespace;
+
 		if (codepoint1 != '\n')
 		{
 			while (codepoint1 != '\n' && codepoint1 != '\0')
@@ -1060,11 +1069,7 @@ ICSE::graphics::RECT ICSE::font::FontRenderer::GetRenderRect(const char * utf8tx
 
 
 
-		//Prepare for the nextline
-		if (r_w < x)
-			r_w = x;
-		x = basex;
-		basey += m_lineheight + m_linespace;
+		
 	}
 	r_w += m_outline_width;
 	r_h = basey + m_outline_width;
