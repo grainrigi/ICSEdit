@@ -56,8 +56,8 @@ namespace graphics{
 		int bottom;
 		int right;
 
-		int width(void) const { return std::abs(right - left); }
-		int height(void) const { return std::abs(bottom - top); }
+		int width(void) const { return std::abs(right - left) + 1; }
+		int height(void) const { return std::abs(bottom - top) + 1; }
 	};
 }
 }
