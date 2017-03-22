@@ -70,6 +70,12 @@ void ICSE::wnd::ControlWindow::initContextAndRenderer(void)
 	m_context = SDL_GL_CreateContext(this->window());
 	SDL_GL_MakeCurrent(this->window(), m_context);
 
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	m_m2drend.LateInitialize();
 	m_cvsrend.LateInitialize(&m_m2drend);
 	m_ctlshader.LateInitialize();
@@ -83,6 +89,7 @@ void ICSE::wnd::ControlWindow::OnUpdate(void)
 
 	this->MakeCurrent();
 
+	glViewport(0, 0, width(), height());
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (auto &layer : m_layers)
