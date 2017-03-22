@@ -41,7 +41,7 @@ void ICSE::wnd::WindowManager::RegisterWindow(std::shared_ptr<ICSE::sdl::SDLWind
 
 bool ICSE::wnd::WindowManager::ProcessEvent(void)
 {
-	constexpr std::chrono::nanoseconds frame(16000000);
+	constexpr std::chrono::nanoseconds frame(16666666);
 
 	SDL_Event ev;
 
