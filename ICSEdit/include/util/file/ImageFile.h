@@ -20,6 +20,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 #include "util/container/Uint8Array.h"
 #include "util/file/BinaryFile.h"
+#include "graphics/MemCanvasRGBA8.h"
 
 namespace ICSE{
 namespace file{
@@ -54,6 +55,8 @@ namespace file{
 
 		uint32_t getPixelsSize(void) const { return this->m_pixels.getSize(); }
 		const uint8_t *getPixels(void) const { return this->m_pixels.getPtr(); }
+
+		graphics::MemCanvasRGBA8 CreateMemCanvas(void);
 
 	private:
 	};
