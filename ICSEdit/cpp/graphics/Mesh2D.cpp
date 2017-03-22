@@ -233,7 +233,7 @@ void Mesh2D::upload(void)
 	uint32_t posSize{0}, coordSize{0}, colorSize{0}, vertCount, idxSize;
 
 	if(m_vertCount <= 0)
-		m_vertCount = -(vertCount = std::max(
+		m_vertCount = -(vertCount = (signed int)std::max(
 			m_Position ? m_Position->size() : 0, 
 			std::max(m_Coords ? m_Coords->size() : 0, 
 			m_Color ? m_Color->size() : 0)
@@ -259,7 +259,7 @@ void Mesh2D::upload(void)
 	if(m_elemCount <= 0)
 	{
 		idxSize = m_Indices ? m_Indices->size() * sizeof(uint16_t) : 0;
-		m_elemCount = m_Indices ? -m_Indices->size() / 3 : 0;
+		m_elemCount = m_Indices ? -(signed int)m_Indices->size() / 3 : 0;
 	}
 	else
 		idxSize = m_elemCount * sizeof(uint16_t) * 3;
