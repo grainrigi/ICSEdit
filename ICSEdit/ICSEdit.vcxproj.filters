@@ -202,6 +202,9 @@
     <ClCompile Include="cpp\wnd\ControlRenderer.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\util\file\ResourceManager.cpp">
+      <Filter>Sources\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="cpp\util\file\FileNotFoundException.cpp">
       <Filter>Sources\util\file</Filter>
     </ClCompile>
@@ -344,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="include\wnd\ControlRenderer.h">
       <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\file\ResourceManager.h">
+      <Filter>Headers\util\file</Filter>
     </ClInclude>
     <ClInclude Include="include\util\file\FileNotFoundException.h">
       <Filter>Headers\util\file</Filter>
