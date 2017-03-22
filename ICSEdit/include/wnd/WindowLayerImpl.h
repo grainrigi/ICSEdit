@@ -5,7 +5,7 @@ inline std::shared_ptr<Control> ICSE::wnd::WindowLayer::CreateControl(Args ...ar
 	static_assert(!std::is_base_of<ICSE::wnd::AWCanvasControl, Control>::value, "CanvasControl must be created by CreateAscentCanvasControl or CreateDescentCanvasControl.");
 
 	std::shared_ptr<Control> ctl{ new Control(args...) };
-	m_controls.insert(std::make_pair(ctl->id(), ctl));
+	this->InitAndAddControl(ctl);
 
 	return ctl;
 }
@@ -16,7 +16,7 @@ inline std::shared_ptr<Control> WindowLayer::CreateAscentCanvasControl(Args ...a
 	static_assert(std::is_base_of<ICSE::wnd::AWCanvasControl, Control>::value, "The Control must inherit AWCanvasControl.");
 
 	std::shared_ptr<Control> ctl{ new Control(args...) };
-	m_controls.insert(std::make_pair(ctl->id(), ctl));
+	this->InitAndAddControl(ctl);
 	m_ascentcontrols.insert(std::make_pair(ctl->id(), ctl));
 	m_ascent.AddCanvasControl(ctl);
 	return ctl;
@@ -28,7 +28,7 @@ inline std::shared_ptr<Control> ICSE::wnd::WindowLayer::CreateDescentCanvasContr
 	static_assert(std::is_base_of<ICSE::wnd::AWCanvasControl, Control>::value, "The Control must inherit AWCanvasControl.");
 
 	std::shared_ptr<Control> ctl{ new Control(args...) };
-	m_controls.insert(std::make_pair(ctl->id(), ctl));
+	this->InitAndAddControl(ctl);
 	m_descentcontrols.insert(std::make_pair(ctl->id(), ctl));
 	m_descent.AddCanvasControl(ctl);
 	return ctl;

@@ -90,3 +90,9 @@ uint32_t ICSE::wnd::WindowLayer::ObtainID(void)
 
 	return ctr++;
 }
+
+void ICSE::wnd::WindowLayer::InitAndAddControl(std::shared_ptr<AWControl> ctl)
+{
+	ctl->InitControl(m_parent);
+	m_controls.insert(std::make_pair(ctl->id(), ctl));
+}

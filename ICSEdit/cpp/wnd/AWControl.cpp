@@ -22,10 +22,16 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 using namespace ICSE::wnd;
 
 ICSE::wnd::AWControl::AWControl(void)
-	: m_id{ AWControl::ObtainNewID() }
+	: m_id{ AWControl::ObtainNewID() },
+	m_parent(nullptr)
 {
 	Move += [&](int x, int y) { this->move(x, y); };
 	Resize += [&](int w, int h) { this->resize(w, h); };
+}
+
+void ICSE::wnd::AWControl::InitControl(ControlWindow * parent)
+{
+	m_parent = parent;
 }
 
 bool ICSE::wnd::AWControl::operator==(const AWControl & ctl) const

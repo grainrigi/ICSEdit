@@ -24,12 +24,17 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 namespace ICSE {
 namespace wnd {
 
+	class ControlWindow;
+
 	class AWControl {
 		BoundingBox m_bb;
 		uint32_t m_id;
+		ControlWindow *m_parent;
 
 	public:
 		AWControl(void);
+
+		void InitControl(ControlWindow *parent);
 
 		const BoundingBox &GetBB(void) const { return m_bb; }
 
@@ -43,6 +48,7 @@ namespace wnd {
 	protected:
 		Delegate<> dUpdate;
 		Delegate<SDL_Event&> dOnEvent;
+		ControlWindow *parent(void) const { return m_parent; }
 
 		//These features are available but the accessibilities can be specified by the derived classes.
 		Delegate<int, int> Move;

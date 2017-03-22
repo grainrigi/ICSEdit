@@ -58,6 +58,7 @@ namespace wnd {
 		
 	private:
 		static uint32_t ObtainID(void);
+		void InitAndAddControl(std::shared_ptr<AWControl> ctl);
 	};
 
 #include "wnd/WindowLayerImpl.h"
