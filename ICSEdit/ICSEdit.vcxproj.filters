@@ -202,6 +202,9 @@
     <ClCompile Include="cpp\wnd\ControlRenderer.cpp">
       <Filter>Sources\wnd</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\wnd\WCanvasControl.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
     <ClCompile Include="cpp\util\file\ResourceManager.cpp">
       <Filter>Sources\util\file</Filter>
     </ClCompile>
@@ -346,6 +349,9 @@
       <Filter>Headers\graphics</Filter>
     </ClInclude>
     <ClInclude Include="include\wnd\ControlRenderer.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\WCanvasControl.h">
       <Filter>Headers\wnd</Filter>
     </ClInclude>
     <ClInclude Include="include\util\file\ResourceManager.h">
