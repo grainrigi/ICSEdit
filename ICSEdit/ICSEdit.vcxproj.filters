@@ -211,6 +211,12 @@
     <ClCompile Include="cpp\util\file\FileNotFoundException.cpp">
       <Filter>Sources\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\wnd\WDereButton.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\wnd\AWButton.cpp">
+      <Filter>Sources\wnd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stdafx.h">
@@ -359,6 +365,12 @@
     </ClInclude>
     <ClInclude Include="include\util\file\FileNotFoundException.h">
       <Filter>Headers\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\WDereButton.h">
+      <Filter>Headers\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd\AWButton.h">
+      <Filter>Headers\wnd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

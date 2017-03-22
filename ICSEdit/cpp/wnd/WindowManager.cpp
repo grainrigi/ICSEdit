@@ -18,11 +18,18 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "wnd/WindowManager.h"
+#include "wnd/WDereButton.h"
 
 using namespace ICSE::wnd;
 
 ICSE::wnd::WindowManager::WindowManager(void)
 {
+	Singleton<WDereButton::ImageManager>::create();
+}
+
+ICSE::wnd::WindowManager::~WindowManager(void)
+{
+	Singleton<WDereButton::ImageManager>::destroy();
 }
 
 void ICSE::wnd::WindowManager::RegisterWindow(std::shared_ptr<ICSE::sdl::SDLWindow> window, bool isMain)

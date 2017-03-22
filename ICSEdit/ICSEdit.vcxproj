@@ -212,8 +212,10 @@
     <ClCompile Include="cpp\graphics\MemCanvasRenderTexturePool.cpp" />
     <ClCompile Include="cpp\wnd\ControlRenderer.cpp" />
     <ClCompile Include="cpp\wnd\WCanvasControl.cpp" />
+    <ClCompile Include="cpp\wnd\WDereButton.cpp" />
     <ClCompile Include="cpp\util\file\ResourceManager.cpp" />
     <ClCompile Include="cpp\util\file\FileNotFoundException.cpp" />
+    <ClCompile Include="cpp\wnd\AWButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpp\sdl\SDLWindow.cpp">
@@ -266,8 +268,10 @@
     <ClInclude Include="include\graphics\MemCanvasRenderTexturePool.h" />
     <ClInclude Include="include\wnd\ControlRenderer.h" />
     <ClInclude Include="include\wnd\WCanvasControl.h" />
+    <ClInclude Include="include\wnd\WDereButton.h" />
     <ClInclude Include="include\util\file\ResourceManager.h" />
     <ClInclude Include="include\util\file\FileNotFoundException.h" />
+    <ClInclude Include="include\wnd\AWButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
