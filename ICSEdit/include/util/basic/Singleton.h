@@ -1,4 +1,4 @@
-/*
+ï»¿/*
 (c) 2016,2017 Grain
 
 This file is part of ICSEdit.
@@ -20,7 +20,7 @@ along with ICSEdit.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 /**
-*  @brief  ƒVƒ“ƒOƒ‹ƒgƒ“ƒzƒ‹ƒ_[
+*  @brief  ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãƒ›ãƒ«ãƒ€ãƒ¼
 */
 namespace ICSE {
 	template <class _Ty, class... _Args>
@@ -30,14 +30,14 @@ namespace ICSE {
 		typedef _Ty InstanceType;
 
 	public:
-		/// ¶¬
+		/// ç”Ÿæˆ
 		static void create(_Args... args)
 		{
 			if (_instance == NULL) {
 				_instance = new InstanceType(args...);
 			}
 		}
-		/// ”jŠü
+		/// ç ´æ£„
 		static void destroy()
 		{
 			if (_instance != NULL) {
@@ -47,40 +47,43 @@ namespace ICSE {
 		}
 
 	#if 1
-		/// ƒCƒ“ƒXƒ^ƒ“ƒXƒQƒbƒg
+		/// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚²ãƒƒãƒˆ
 		static InstanceType& getInstance()
 		{
+			assert(_instance != nullptr);
 			return *_instance;
 		}
 	#else
-		/// ƒCƒ“ƒXƒ^ƒ“ƒXƒQƒbƒg
+		/// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚²ãƒƒãƒˆ
 		static InstanceType* getInstance()
 		{
 			return _instance;
 		}
 	#endif
-		/// ƒCƒ“ƒXƒ^ƒ“ƒXQÆƒQƒbƒg
+		/// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§ã‚²ãƒƒãƒˆ
 		static InstanceType& getInstanceRef()
 		{
+			assert(_instance != nullptr);
 			return *_instance;
 		}
 
-		/// ƒCƒ“ƒXƒ^ƒ“ƒXƒ|ƒCƒ“ƒ^ƒQƒbƒg
+		/// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒã‚¤ãƒ³ã‚¿ã‚²ãƒƒãƒˆ
 		static InstanceType* getInstancePtr()
 		{
+			assert(_instance != nullptr);
 			return _instance;
 		}
 
-		/// ¶¬Ï‚İ??
+		/// ç”Ÿæˆæ¸ˆã¿??
 		static bool isCreate() { return _instance != NULL; };
-		/// ”jŠüÏ‚İ??
+		/// ç ´æ£„æ¸ˆã¿??
 		static bool isDestroy() { return _instance == NULL; };
 
 	private:
-		static InstanceType* _instance; //!< ƒCƒ“ƒXƒ^ƒ“ƒX
+		static InstanceType* _instance; //!< ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 
 	private:
-		// ‹Ö~
+		// ç¦æ­¢
 		Singleton() = delete;
 		virtual ~Singleton() = delete;
 
