@@ -43,6 +43,7 @@ namespace wnd {
 		static constexpr int BUTTON_INNER_HEIGHT = 64 / 2;
 		static constexpr int BUTTON_LARGE_DEFAULT_WIDTH = 256 / 2;
 		static constexpr int BUTTON_SMALL_DEFAULT_WIDTH = 170 / 2;
+		static constexpr int STATIC_Y_OFFSET = 2;
 
 		std::shared_ptr<WStaticText> m_static;
 		std::shared_ptr<WCanvasControl> m_canvas;

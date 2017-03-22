@@ -105,7 +105,10 @@ void ICSE::wnd::WDereButton::OnResize(int w, int h)
 void ICSE::wnd::WDereButton::OnMove(int x, int y)
 {
 	m_canvas->Move(x, y);
-	m_static->Move(x, y);
+	if (pushing())
+		m_static->Move(x, y + (BUTTON_HEIGHT - BUTTON_INNER_HEIGHT) + STATIC_Y_OFFSET);
+	else
+		m_static->Move(x, y + STATIC_Y_OFFSET);
 }
 
 void ICSE::wnd::WDereButton::updateButtonCanvas()
@@ -138,10 +141,8 @@ void ICSE::wnd::WDereButton::updateButtonCanvas()
 
 void ICSE::wnd::WDereButton::setPushing(bool pushing)
 {
-	if (pushing)
-		m_static->Move(this->GetBB().GetX(), this->GetBB().GetY() + (BUTTON_HEIGHT - BUTTON_INNER_HEIGHT));
-	else
-		m_static->Move(this->GetBB().GetX(), this->GetBB().GetY());
+	auto& bb = this->GetBB();
+	this->Move(bb.GetX(), bb.GetY());
 
 	updateButtonCanvas();
 }
